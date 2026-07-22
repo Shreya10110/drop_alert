@@ -36,9 +36,14 @@ def seed_initial_data():
             count_al = con.execute("SELECT COUNT(*) FROM alerts").fetchone()[0]
             
             if count_ph < 80:
-                for p in products:
+                for idx, p in enumerate(products):
                     p_mrp = p["mrp"] if p["mrp"] > p["price"] else p["price"] + 350
-                    p_mid = max(p["price"] + 150, int((p_mrp + p["price"]) / 2))
+                    
+                    is_hike = (idx % 4 == 0)
+                    if is_hike:
+                        p_mid = max(300, p["price"] - 150)
+                    else:
+                        p_mid = max(p["price"] + 150, int((p_mrp + p["price"]) / 2))
                     
                     # Day 3 ago
                     con.execute("""
@@ -60,19 +65,28 @@ def seed_initial_data():
                 con.commit()
                 
             if count_al == 0:
-                for p in products[:12]:
-                    old_p = max(int(p["price"] * 1.25), p["price"] + 200)
-                    if p["mrp"] > p["price"]:
-                        old_p = min(old_p, p["mrp"])
-                    price_change = p["price"] - old_p
-                    change_pct = round(abs(price_change) / old_p * 100, 1)
+                for idx, p in enumerate(products[:12]):
+                    is_hike = (idx % 4 == 0)
+                    if is_hike:
+                        old_p = max(300, p["price"] - 150)
+                        price_change = p["price"] - old_p
+                        change_pct = round(price_change / old_p * 100, 1)
+                        alert_type = "INCREASE"
+                    else:
+                        old_p = max(int(p["price"] * 1.25), p["price"] + 200)
+                        if p["mrp"] > p["price"]:
+                            old_p = min(old_p, p["mrp"])
+                        price_change = p["price"] - old_p
+                        change_pct = round(abs(price_change) / old_p * 100, 1)
+                        alert_type = "DROP"
+
                     con.execute("""
                         INSERT INTO alerts (product_name, product_url, old_price, new_price, price_change, change_pct, alert_type, image_url, triggered_at)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, (p["name"], p["url"], old_p, p["price"], price_change, change_pct, "DROP", p.get("image", ""), today))
+                    """, (p["name"], p["url"], old_p, p["price"], price_change, change_pct, alert_type, p.get("image", ""), today))
                 con.commit()
                 
-        print("[DB] Successfully seeded multi-day price history and alerts!")
+        print("[DB] Successfully seeded multi-day price history with drops & hikes!")
     except Exception as e:
         print(f"[DB Seed Error] {e}")
 
@@ -108,9 +122,12 @@ def init_db():
         con.execute("DELETE FROM alerts WHERE old_price > 6000 OR new_price > 6000")
         con.commit()
         
+        types = [r[0] for r in con.execute("SELECT DISTINCT alert_type FROM alerts").fetchall()]
         count_ph = con.execute("SELECT COUNT(*) FROM price_history").fetchone()[0]
-        count_al = con.execute("SELECT COUNT(*) FROM alerts").fetchone()[0]
-        if count_ph == 0 or count_al == 0:
+        if count_ph == 0 or len(types) < 2:
+            con.execute("DELETE FROM alerts")
+            con.execute("DELETE FROM price_history")
+            con.commit()
             seed_initial_data()
 
 init_db()
