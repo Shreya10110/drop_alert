@@ -28,20 +28,42 @@ def seed_initial_data():
             
         now_dt = datetime.now()
         yesterday = (now_dt - timedelta(days=1)).strftime("%Y-%m-%d %H:%M")
+        today = now_dt.strftime("%Y-%m-%d %H:%M")
         
         with get_connection() as con:
-            for p in products:
-                old_p = max(int(p["price"] * 1.25), p["price"] + 200)
-                if p["mrp"] > p["price"]:
-                    old_p = min(old_p, p["mrp"])
-                old_disc = max(0, p["discount"] - 15)
-                con.execute("""
-                    INSERT INTO price_history (name, url, price, mrp, discount, image, scraped_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
-                """, (p["name"], p["url"], old_p, p["mrp"], old_disc, p["image"], yesterday))
-            con.commit()
+            count_ph = con.execute("SELECT COUNT(*) FROM price_history").fetchone()[0]
+            count_al = con.execute("SELECT COUNT(*) FROM alerts").fetchone()[0]
             
-        save_products(products)
+            if count_ph == 0:
+                for p in products:
+                    old_p = max(int(p["price"] * 1.25), p["price"] + 200)
+                    if p["mrp"] > p["price"]:
+                        old_p = min(old_p, p["mrp"])
+                    old_disc = max(0, p["discount"] - 15)
+                    con.execute("""
+                        INSERT INTO price_history (name, url, price, mrp, discount, image, scraped_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)
+                    """, (p["name"], p["url"], old_p, p["mrp"], old_disc, p["image"], yesterday))
+                    
+                    con.execute("""
+                        INSERT INTO price_history (name, url, price, mrp, discount, image, scraped_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)
+                    """, (p["name"], p["url"], p["price"], p["mrp"], p["discount"], p["image"], today))
+                con.commit()
+                
+            if count_al == 0:
+                for p in products[:10]:
+                    old_p = max(int(p["price"] * 1.25), p["price"] + 200)
+                    if p["mrp"] > p["price"]:
+                        old_p = min(old_p, p["mrp"])
+                    price_change = p["price"] - old_p
+                    change_pct = round(abs(price_change) / old_p * 100, 1)
+                    con.execute("""
+                        INSERT INTO alerts (product_name, product_url, old_price, new_price, price_change, change_pct, alert_type, image_url, triggered_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """, (p["name"], p["url"], old_p, p["price"], price_change, change_pct, "DROP", p.get("image", ""), today))
+                con.commit()
+                
         print("[DB] Successfully seeded initial products and alerts!")
     except Exception as e:
         print(f"[DB Seed Error] {e}")
@@ -76,8 +98,9 @@ def init_db():
         """)
         con.commit()
         
-        count = con.execute("SELECT COUNT(*) FROM price_history").fetchone()[0]
-        if count == 0:
+        count_ph = con.execute("SELECT COUNT(*) FROM price_history").fetchone()[0]
+        count_al = con.execute("SELECT COUNT(*) FROM alerts").fetchone()[0]
+        if count_ph == 0 or count_al == 0:
             seed_initial_data()
 
 init_db()
