@@ -1,0 +1,19 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database & Scraped HTML Cache
+prices.db
+*.sqlite3
+flipkart.html
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Antigravity IDE & System
+.agents/
+.streamlit/secrets.toml
