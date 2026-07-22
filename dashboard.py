@@ -676,6 +676,7 @@ if products:
             height=320,
             xaxis=dict(
                 title="Timestamp / Scrape Date",
+                type="category",
                 gridcolor="rgba(255, 255, 255, 0.06)",
                 showline=True,
                 linecolor="rgba(255,255,255,0.1)"
@@ -685,7 +686,8 @@ if products:
                 gridcolor="rgba(255, 255, 255, 0.06)",
                 showline=True,
                 linecolor="rgba(255,255,255,0.1)",
-                tickprefix="₹"
+                tickprefix="₹",
+                tickformat="d"
             ),
             hoverlabel=dict(
                 bgcolor="#1e293b",
@@ -693,6 +695,9 @@ if products:
                 font_family="Plus Jakarta Sans"
             )
         )
+
+        if all_time_low == all_time_high:
+            fig.update_yaxes(range=[max(0, all_time_low - 100), all_time_high + 100])
 
         st.plotly_chart(fig, use_container_width=True)
 
