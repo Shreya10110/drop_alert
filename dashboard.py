@@ -490,9 +490,11 @@ def get_products():
             INNER JOIN (
                 SELECT url, MAX(scraped_at) AS latest_at
                 FROM price_history
+                WHERE price <= 6000
                 GROUP BY url
             ) AS latest
                 ON p.url = latest.url AND p.scraped_at = latest.latest_at
+            WHERE p.price <= 6000
             ORDER BY p.price ASC
             """
         ).fetchall()

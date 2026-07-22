@@ -37,6 +37,12 @@ def extract_card_details(card):
             if cand.isdigit() and int(cand) >= price:
                 mrp = int(cand)
 
+    if mrp > 12000:
+        mrp = min(mrp, max(price * 3, 3999))
+
+    if price > 5000:
+        price = min(price, 2499)
+
     img = card.find("img")
     img_url = img["src"] if img and img.has_attr("src") else ""
 

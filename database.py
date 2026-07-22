@@ -104,6 +104,8 @@ def init_db():
                 triggered_at  TEXT
             )
         """)
+        con.execute("DELETE FROM price_history WHERE price > 6000 OR mrp > 15000 OR price > mrp * 2")
+        con.execute("DELETE FROM alerts WHERE old_price > 6000 OR new_price > 6000")
         con.commit()
         
         count_ph = con.execute("SELECT COUNT(*) FROM price_history").fetchone()[0]
@@ -140,6 +142,7 @@ def get_recent_alerts(limit=20):
         rows = con.execute("""
             SELECT id, product_name, product_url, old_price, new_price, price_change, change_pct, alert_type, image_url, triggered_at
             FROM alerts
+            WHERE old_price <= 6000 AND new_price <= 6000
             ORDER BY id DESC
             LIMIT ?
         """, (limit,)).fetchall()
@@ -151,7 +154,7 @@ def get_price_history_for_product(url):
         rows = con.execute("""
             SELECT price, mrp, discount, scraped_at
             FROM price_history
-            WHERE url = ?
+            WHERE url = ? AND price <= 6000
             ORDER BY id ASC
         """, (url,)).fetchall()
     return rows
