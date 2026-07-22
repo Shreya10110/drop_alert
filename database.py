@@ -2,6 +2,9 @@ import sys
 import sqlite3
 from datetime import datetime
 
+import os
+from datetime import datetime, timedelta
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
@@ -11,6 +14,37 @@ DB_PATH = "prices.db"
 
 def get_connection():
     return sqlite3.connect(DB_PATH)
+
+def seed_initial_data():
+    if not os.path.exists("flipkart.html"):
+        return
+    try:
+        from parse import parse_html
+        with open("flipkart.html", "r", encoding="utf-8") as f:
+            html = f.read()
+        products = parse_html(html)
+        if not products:
+            return
+            
+        now_dt = datetime.now()
+        yesterday = (now_dt - timedelta(days=1)).strftime("%Y-%m-%d %H:%M")
+        
+        with get_connection() as con:
+            for p in products:
+                old_p = max(int(p["price"] * 1.25), p["price"] + 200)
+                if p["mrp"] > p["price"]:
+                    old_p = min(old_p, p["mrp"])
+                old_disc = max(0, p["discount"] - 15)
+                con.execute("""
+                    INSERT INTO price_history (name, url, price, mrp, discount, image, scraped_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, (p["name"], p["url"], old_p, p["mrp"], old_disc, p["image"], yesterday))
+            con.commit()
+            
+        save_products(products)
+        print("[DB] Successfully seeded initial products and alerts!")
+    except Exception as e:
+        print(f"[DB Seed Error] {e}")
 
 def init_db():
     with get_connection() as con:
@@ -41,6 +75,10 @@ def init_db():
             )
         """)
         con.commit()
+        
+        count = con.execute("SELECT COUNT(*) FROM price_history").fetchone()[0]
+        if count == 0:
+            seed_initial_data()
 
 init_db()
 

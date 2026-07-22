@@ -6,7 +6,6 @@ __pycache__/
 # Database & Scraped HTML Cache
 prices.db
 *.sqlite3
-flipkart.html
 
 # Virtual Environments
 .venv/

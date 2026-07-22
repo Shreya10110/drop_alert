@@ -523,6 +523,10 @@ def clean_mrp(price, mrp, discount):
 
 try:
     products = get_products()
+    if not products:
+        run_scraper()
+        st.cache_data.clear()
+        products = get_products()
     recent_alerts = get_recent_alerts(limit=10)
 except Exception as exc:
     st.error(f"Error loading database: {exc}")
