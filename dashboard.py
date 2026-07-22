@@ -471,7 +471,9 @@ with col_hero:
 with col_action:
     if st.button("⚡ Scrape Fresh Deals", use_container_width=True, type="primary"):
         with st.spinner("Scraping Flipkart using automated proxy rotation..."):
+            st.cache_data.clear()
             res = run_scraper()
+            st.cache_data.clear()
             if res["status"] == "success":
                 st.success(f"Scraped {res['products_count']} products! {res['alerts_triggered']} price alerts triggered.")
                 time.sleep(1)
