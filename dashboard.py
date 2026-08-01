@@ -28,16 +28,17 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Clean Light Theme CSS System
+# ── Soft Frosted Mesh Glassmorphism CSS System
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 :root {
     --bg-main: #f8fafc;
-    --bg-card: #ffffff;
-    --border-color: #e2e8f0;
-    --border-hover: #cbd5e1;
+    --bg-glass: rgba(255, 255, 255, 0.82);
+    --bg-glass-hover: rgba(255, 255, 255, 0.95);
+    --border-glass: rgba(226, 232, 240, 0.8);
+    --border-hover: rgba(99, 102, 241, 0.35);
     --accent-primary: #4f46e5;
     --accent-hover: #4338ca;
     --accent-light: #eef2ff;
@@ -47,14 +48,16 @@ st.markdown("""
     --accent-rose-bg: #fef2f2;
     --text-primary: #0f172a;
     --text-secondary: #64748b;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
-    --shadow-hover: 0 12px 30px rgba(79, 70, 229, 0.12);
+    --shadow-soft: 0 10px 30px rgba(99, 102, 241, 0.05);
+    --shadow-hover: 0 16px 40px rgba(99, 102, 241, 0.14);
 }
 
 html, body, [data-testid="stAppViewContainer"],
 [data-testid="stMain"], .stApp {
-    background: var(--bg-main) !important;
+    background: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.07) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+                #f8fafc !important;
     color: var(--text-primary) !important;
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
 }
@@ -79,42 +82,44 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    box-shadow: var(--shadow-sm);
+    padding: 1.1rem 1.6rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
     margin-bottom: 1.8rem;
+    backdrop-filter: blur(20px);
 }
 
 .brand-lockup {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 1rem;
 }
 
 .brand-logo {
-    width: 3rem;
-    height: 3rem;
+    width: 3.1rem;
+    height: 3.1rem;
     display: grid;
     place-items: center;
-    background: var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-primary), #6366f1);
     color: #ffffff;
-    border-radius: 12px;
-    font-size: 1.6rem;
+    border-radius: 14px;
+    font-size: 1.7rem;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
 }
 
 .brand-text {
-    font-size: 1.75rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 900;
     color: var(--text-primary);
     letter-spacing: -0.03em;
 }
 
 .brand-badge {
-    padding: 0.2rem 0.6rem;
+    padding: 0.22rem 0.7rem;
     background: var(--accent-light);
-    border: 1px solid rgba(79, 70, 229, 0.2);
+    border: 1px solid rgba(79, 70, 229, 0.25);
     border-radius: 9999px;
     color: var(--accent-primary);
     font-size: 0.72rem;
@@ -127,10 +132,10 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .status-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.85rem;
+    gap: 0.55rem;
+    padding: 0.45rem 0.95rem;
     background: var(--accent-emerald-bg);
-    border: 1px solid rgba(5, 150, 105, 0.2);
+    border: 1px solid rgba(5, 150, 105, 0.25);
     border-radius: 9999px;
     color: var(--accent-emerald);
     font-size: 0.78rem;
@@ -146,18 +151,19 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 
 /* Hero Section */
 .hero-card {
-    padding: 1.8rem 2rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-left: 5px solid var(--accent-primary);
-    border-radius: 18px;
-    box-shadow: var(--shadow-sm);
+    padding: 2rem 2.2rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-left: 6px solid var(--accent-primary);
+    border-radius: 22px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(20px);
     margin-bottom: 1.8rem;
 }
 
 .hero-card h1 {
     margin: 0 0 0.5rem;
-    font-size: 1.75rem;
+    font-size: 1.85rem;
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.02em;
@@ -166,23 +172,25 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .hero-card p {
     margin: 0;
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 0.96rem;
+    line-height: 1.6;
 }
 
 /* Stat Metric Strip */
 [data-testid="stMetric"] {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 16px !important;
-    padding: 1.2rem 1.4rem !important;
-    box-shadow: var(--shadow-sm) !important;
-    transition: all 0.2s ease !important;
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 18px !important;
+    padding: 1.25rem 1.45rem !important;
+    box-shadow: var(--shadow-soft) !important;
+    backdrop-filter: blur(16px) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 [data-testid="stMetric"]:hover {
-    border-color: var(--accent-primary) !important;
-    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-3px) !important;
+    border-color: var(--border-hover) !important;
+    box-shadow: var(--shadow-hover) !important;
 }
 
 [data-testid="stMetricLabel"] {
@@ -195,7 +203,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 
 [data-testid="stMetricValue"] {
     color: var(--text-primary) !important;
-    font-size: 1.75rem !important;
+    font-size: 1.8rem !important;
     font-weight: 800 !important;
 }
 
@@ -222,17 +230,18 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 
 /* Alert Cards */
 .alert-card {
-    padding: 1.1rem 1.4rem;
-    margin-bottom: 0.9rem;
-    border-radius: 14px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    padding: 1.15rem 1.45rem;
+    margin-bottom: 0.95rem;
+    border-radius: 16px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(16px);
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .alert-card:hover {
@@ -240,8 +249,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     border-color: var(--border-hover);
 }
 
-.alert-card.drop { border-left: 4px solid var(--accent-emerald); }
-.alert-card.increase { border-left: 4px solid var(--accent-rose); }
+.alert-card.drop { border-left: 5px solid var(--accent-emerald); }
+.alert-card.increase { border-left: 5px solid var(--accent-rose); }
 
 .alert-pill {
     display: inline-flex;
@@ -255,8 +264,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     text-transform: uppercase;
 }
 
-.alert-pill.drop { background: var(--accent-emerald-bg); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.2); }
-.alert-pill.increase { background: var(--accent-rose-bg); color: var(--accent-rose); border: 1px solid rgba(220, 38, 38, 0.2); }
+.alert-pill.drop { background: var(--accent-emerald-bg); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.25); }
+.alert-pill.increase { background: var(--accent-rose-bg); color: var(--accent-rose); border: 1px solid rgba(220, 38, 38, 0.25); }
 
 .alert-meta {
     font-size: 0.82rem;
@@ -270,17 +279,19 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     flex-direction: column;
     height: 100%;
     padding: 1.4rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 22px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    border-color: var(--border-hover);
     box-shadow: var(--shadow-hover);
+    background: var(--bg-glass-hover);
 }
 
 .card-badges {
@@ -291,7 +302,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 .deal-badge {
-    padding: 0.3rem 0.7rem;
+    padding: 0.32rem 0.75rem;
     background: var(--accent-light);
     color: var(--accent-primary);
     font-size: 0.72rem;
@@ -299,44 +310,44 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     border-radius: 9999px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    border: 1px solid rgba(79, 70, 229, 0.2);
+    border: 1px solid rgba(79, 70, 229, 0.25);
 }
 
 .trend-indicator {
     font-size: 0.76rem;
     font-weight: 700;
     color: var(--accent-emerald);
-    padding: 0.2rem 0.6rem;
+    padding: 0.22rem 0.65rem;
     background: var(--accent-emerald-bg);
     border-radius: 9999px;
 }
 
 .trend-indicator.up { color: var(--accent-rose); background: var(--accent-rose-bg); }
-.trend-indicator.flat { color: var(--text-secondary); background: #f1f5f9; }
+.trend-indicator.flat { color: var(--text-secondary); background: rgba(241, 245, 249, 0.8); }
 
 /* Fixed Uniform Image Box */
 .product-img-box {
     width: 100%;
-    height: 150px;
+    height: 155px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f8fafc;
-    border-radius: 12px;
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 14px;
     margin-bottom: 1.1rem;
     padding: 0.8rem;
-    border: 1px solid #f1f5f9;
+    border: 1px solid rgba(226, 232, 240, 0.6);
 }
 
 .product-img-box img {
-    max-height: 130px;
+    max-height: 135px;
     max-width: 100%;
     object-fit: contain;
-    transition: transform 0.25s ease;
+    transition: transform 0.3s ease;
 }
 
 .product-card:hover .product-img-box img {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 .product-title {
@@ -355,7 +366,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .price-box {
     margin-top: auto;
     padding-top: 0.9rem;
-    border-top: 1px dashed var(--border-color);
+    border-top: 1px dashed rgba(226, 232, 240, 0.9);
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -391,39 +402,39 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     display: block;
     margin-top: 1rem;
     padding: 0.8rem 1rem;
-    background: var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-primary), #6366f1);
     color: #ffffff !important;
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.05em;
     text-align: center;
     text-decoration: none !important;
-    border-radius: 12px;
+    border-radius: 14px;
     text-transform: uppercase;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+    transition: all 0.25s ease;
 }
 
 .deal-button:hover {
-    background: var(--accent-hover);
-    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, var(--accent-hover), #4f46e5);
+    box-shadow: 0 8px 22px rgba(79, 70, 229, 0.4);
+    transform: translateY(-2px);
 }
 
 div.stButton > button[kind="primary"] {
-    background: var(--accent-primary) !important;
-    border-color: var(--accent-primary) !important;
+    background: linear-gradient(135deg, var(--accent-primary), #6366f1) !important;
+    border: none !important;
     color: #ffffff !important;
     font-weight: 800 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25) !important;
-    transition: all 0.2s ease !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25) !important;
+    transition: all 0.25s ease !important;
 }
 
 div.stButton > button[kind="primary"]:hover {
-    background: var(--accent-hover) !important;
-    border-color: var(--accent-hover) !important;
-    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4) !important;
+    background: linear-gradient(135deg, var(--accent-hover), #4f46e5) !important;
+    box-shadow: 0 8px 22px rgba(79, 70, 229, 0.4) !important;
+    transform: translateY(-1px) !important;
 }
 
 /* All Time Low Badge */
@@ -445,9 +456,9 @@ div.stButton > button[kind="primary"]:hover {
 
 div[data-testid="stTextInput"] input,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 12px !important;
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 14px !important;
     color: var(--text-primary) !important;
 }
 
@@ -466,9 +477,9 @@ label[data-testid="stWidgetLabel"] p {
 }
 
 [data-testid="stDataFrame"] {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 16px !important;
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 18px !important;
 }
 
 @media (max-width: 900px) {
@@ -689,8 +700,8 @@ if products:
         )
 
         fig.update_layout(
-            paper_bgcolor="#f8fafc",
-            plot_bgcolor="#ffffff",
+            paper_bgcolor="rgba(248, 250, 252, 0.6)",
+            plot_bgcolor="rgba(255, 255, 255, 0.95)",
             font=dict(color="#0f172a", family="Plus Jakarta Sans"),
             margin=dict(l=20, r=20, t=30, b=30),
             height=330,
