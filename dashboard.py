@@ -28,36 +28,36 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Soft Frosted Mesh Glassmorphism CSS System
+# ── Warm Amber Gold & Midnight Dark Luxury Aesthetics
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-    --bg-main: #f8fafc;
-    --bg-glass: rgba(255, 255, 255, 0.82);
-    --bg-glass-hover: rgba(255, 255, 255, 0.95);
-    --border-glass: rgba(226, 232, 240, 0.8);
-    --border-hover: rgba(99, 102, 241, 0.35);
-    --accent-primary: #4f46e5;
-    --accent-hover: #4338ca;
-    --accent-light: #eef2ff;
-    --accent-emerald: #059669;
-    --accent-emerald-bg: #ecfdf5;
-    --accent-rose: #dc2626;
-    --accent-rose-bg: #fef2f2;
-    --text-primary: #0f172a;
-    --text-secondary: #64748b;
-    --shadow-soft: 0 10px 30px rgba(99, 102, 241, 0.05);
-    --shadow-hover: 0 16px 40px rgba(99, 102, 241, 0.14);
+    --bg-main: #090d16;
+    --bg-card: rgba(17, 24, 39, 0.85);
+    --bg-card-hover: rgba(26, 36, 56, 0.95);
+    --border-color: rgba(245, 158, 11, 0.22);
+    --border-hover: rgba(245, 158, 11, 0.55);
+    --amber-primary: #f59e0b;
+    --amber-hover: #d97706;
+    --amber-light: rgba(245, 158, 11, 0.12);
+    --emerald-drop: #10b981;
+    --emerald-bg: rgba(16, 185, 129, 0.12);
+    --rose-hike: #f43f5e;
+    --rose-bg: rgba(244, 63, 94, 0.12);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --shadow-amber: 0 10px 30px rgba(245, 158, 11, 0.08);
+    --shadow-hover: 0 16px 40px rgba(245, 158, 11, 0.18);
 }
 
 html, body, [data-testid="stAppViewContainer"],
 [data-testid="stMain"], .stApp {
-    background: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.07) 0px, transparent 50%),
-                radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
-                #f8fafc !important;
+    background: radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(217, 119, 6, 0.06) 0px, transparent 50%),
+                radial-gradient(at 50% 0%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
+                #090d16 !important;
     color: var(--text-primary) !important;
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
 }
@@ -77,18 +77,40 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     padding-bottom: 4rem !important;
 }
 
-/* Top Navigation Header */
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+    }
+}
+
+/* Top Brand Navigation Header */
 .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.1rem 1.6rem;
-    background: var(--bg-glass);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-amber);
     margin-bottom: 1.8rem;
     backdrop-filter: blur(20px);
+    animation: fadeInUp 0.4s ease-out;
 }
 
 .brand-lockup {
@@ -98,33 +120,37 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 .brand-logo {
-    width: 3.1rem;
-    height: 3.1rem;
+    width: 3.2rem;
+    height: 3.2rem;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, var(--accent-primary), #6366f1);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--amber-primary), #d97706);
+    color: #090d16;
     border-radius: 14px;
-    font-size: 1.7rem;
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+    font-size: 1.8rem;
+    box-shadow: 0 8px 22px rgba(245, 158, 11, 0.35);
 }
 
 .brand-text {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
     font-weight: 900;
-    color: var(--text-primary);
+    color: #ffffff;
     letter-spacing: -0.03em;
+}
+
+.brand-text span.gold {
+    color: var(--amber-primary);
 }
 
 .brand-badge {
     padding: 0.22rem 0.7rem;
-    background: var(--accent-light);
-    border: 1px solid rgba(79, 70, 229, 0.25);
+    background: var(--amber-light);
+    border: 1px solid rgba(245, 158, 11, 0.35);
     border-radius: 9999px;
-    color: var(--accent-primary);
+    color: var(--amber-primary);
     font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-weight: 800;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-left: 0.5rem;
 }
@@ -134,10 +160,10 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     align-items: center;
     gap: 0.55rem;
     padding: 0.45rem 0.95rem;
-    background: var(--accent-emerald-bg);
-    border: 1px solid rgba(5, 150, 105, 0.25);
+    background: var(--amber-light);
+    border: 1px solid rgba(245, 158, 11, 0.3);
     border-radius: 9999px;
-    color: var(--accent-emerald);
+    color: var(--amber-primary);
     font-size: 0.78rem;
     font-weight: 700;
 }
@@ -146,26 +172,28 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--accent-emerald);
+    background: var(--amber-primary);
+    animation: pulseGlow 2s infinite;
 }
 
 /* Hero Section */
 .hero-card {
     padding: 2rem 2.2rem;
-    background: var(--bg-glass);
-    border: 1px solid var(--border-glass);
-    border-left: 6px solid var(--accent-primary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 6px solid var(--amber-primary);
     border-radius: 22px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-amber);
     backdrop-filter: blur(20px);
     margin-bottom: 1.8rem;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 .hero-card h1 {
     margin: 0 0 0.5rem;
     font-size: 1.85rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #ffffff;
     letter-spacing: -0.02em;
 }
 
@@ -176,15 +204,16 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     line-height: 1.6;
 }
 
-/* Stat Metric Strip */
+/* Stat Metric Cards */
 [data-testid="stMetric"] {
-    background: var(--bg-glass) !important;
-    border: 1px solid var(--border-glass) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
     border-radius: 18px !important;
     padding: 1.25rem 1.45rem !important;
-    box-shadow: var(--shadow-soft) !important;
+    box-shadow: var(--shadow-amber) !important;
     backdrop-filter: blur(16px) !important;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 [data-testid="stMetric"]:hover {
@@ -202,7 +231,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 [data-testid="stMetricValue"] {
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
     font-size: 1.8rem !important;
     font-weight: 800 !important;
 }
@@ -210,13 +239,14 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 /* Section Headings */
 .section-title-wrap {
     margin: 2.2rem 0 1.2rem;
+    animation: fadeInUp 0.4s ease-out;
 }
 
 .section-kicker {
-    color: var(--accent-primary);
+    color: var(--amber-primary);
     font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
@@ -224,24 +254,25 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     margin: 0.2rem 0 0;
     font-size: 1.4rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #ffffff;
     letter-spacing: -0.02em;
 }
 
-/* Alert Cards */
+/* Price Alert Cards */
 .alert-card {
     padding: 1.15rem 1.45rem;
     margin-bottom: 0.95rem;
     border-radius: 16px;
-    background: var(--bg-glass);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-amber);
     backdrop-filter: blur(16px);
     transition: transform 0.25s ease, border-color 0.25s ease;
+    animation: fadeInUp 0.4s ease-out;
 }
 
 .alert-card:hover {
@@ -249,8 +280,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     border-color: var(--border-hover);
 }
 
-.alert-card.drop { border-left: 5px solid var(--accent-emerald); }
-.alert-card.increase { border-left: 5px solid var(--accent-rose); }
+.alert-card.drop { border-left: 5px solid var(--emerald-drop); }
+.alert-card.increase { border-left: 5px solid var(--rose-hike); }
 
 .alert-pill {
     display: inline-flex;
@@ -264,8 +295,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     text-transform: uppercase;
 }
 
-.alert-pill.drop { background: var(--accent-emerald-bg); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.25); }
-.alert-pill.increase { background: var(--accent-rose-bg); color: var(--accent-rose); border: 1px solid rgba(220, 38, 38, 0.25); }
+.alert-pill.drop { background: var(--emerald-bg); color: var(--emerald-drop); border: 1px solid rgba(16, 185, 129, 0.3); }
+.alert-pill.increase { background: var(--rose-bg); color: var(--rose-hike); border: 1px solid rgba(244, 63, 94, 0.3); }
 
 .alert-meta {
     font-size: 0.82rem;
@@ -279,19 +310,20 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     flex-direction: column;
     height: 100%;
     padding: 1.4rem;
-    background: var(--bg-glass);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 22px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-amber);
     backdrop-filter: blur(20px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fadeInUp 0.5s ease-out;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     border-color: var(--border-hover);
     box-shadow: var(--shadow-hover);
-    background: var(--bg-glass-hover);
+    background: var(--bg-card-hover);
 }
 
 .card-badges {
@@ -303,47 +335,47 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 
 .deal-badge {
     padding: 0.32rem 0.75rem;
-    background: var(--accent-light);
-    color: var(--accent-primary);
+    background: var(--amber-light);
+    color: var(--amber-primary);
     font-size: 0.72rem;
     font-weight: 800;
     border-radius: 9999px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    border: 1px solid rgba(79, 70, 229, 0.25);
+    border: 1px solid rgba(245, 158, 11, 0.35);
 }
 
 .trend-indicator {
     font-size: 0.76rem;
     font-weight: 700;
-    color: var(--accent-emerald);
+    color: var(--emerald-drop);
     padding: 0.22rem 0.65rem;
-    background: var(--accent-emerald-bg);
+    background: var(--emerald-bg);
     border-radius: 9999px;
 }
 
-.trend-indicator.up { color: var(--accent-rose); background: var(--accent-rose-bg); }
-.trend-indicator.flat { color: var(--text-secondary); background: rgba(241, 245, 249, 0.8); }
+.trend-indicator.up { color: var(--rose-hike); background: var(--rose-bg); }
+.trend-indicator.flat { color: var(--text-secondary); background: rgba(255, 255, 255, 0.05); }
 
-/* Fixed Uniform Image Box */
+/* Uniform Fixed Image Box */
 .product-img-box {
     width: 100%;
     height: 155px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(248, 250, 252, 0.8);
+    background: rgba(9, 13, 22, 0.7);
     border-radius: 14px;
     margin-bottom: 1.1rem;
     padding: 0.8rem;
-    border: 1px solid rgba(226, 232, 240, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .product-img-box img {
     max-height: 135px;
     max-width: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease;
 }
 
 .product-card:hover .product-img-box img {
@@ -351,7 +383,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 .product-title {
-    color: var(--text-primary);
+    color: #ffffff;
     font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.4;
@@ -366,7 +398,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .price-box {
     margin-top: auto;
     padding-top: 0.9rem;
-    border-top: 1px dashed rgba(226, 232, 240, 0.9);
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -375,7 +407,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .student-price {
     font-size: 1.65rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #ffffff;
     letter-spacing: -0.02em;
 }
 
@@ -389,51 +421,49 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     display: inline-block;
     font-size: 0.74rem;
     font-weight: 700;
-    color: var(--accent-emerald);
-    background: var(--accent-emerald-bg);
-    border: 1px solid rgba(5, 150, 105, 0.2);
+    color: var(--emerald-drop);
+    background: var(--emerald-bg);
+    border: 1px solid rgba(16, 185, 129, 0.25);
     padding: 0.2rem 0.55rem;
     border-radius: 6px;
     margin-top: 0.4rem;
 }
 
-/* Unified Accent Buttons */
+/* Warm Amber Buttons */
 .deal-button {
     display: block;
     margin-top: 1rem;
     padding: 0.8rem 1rem;
-    background: linear-gradient(135deg, var(--accent-primary), #6366f1);
-    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--amber-primary), var(--amber-hover));
+    color: #090d16 !important;
     font-size: 0.82rem;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 0.05em;
     text-align: center;
     text-decoration: none !important;
     border-radius: 14px;
     text-transform: uppercase;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
     transition: all 0.25s ease;
 }
 
 .deal-button:hover {
-    background: linear-gradient(135deg, var(--accent-hover), #4f46e5);
-    box-shadow: 0 8px 22px rgba(79, 70, 229, 0.4);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.55);
     transform: translateY(-2px);
 }
 
 div.stButton > button[kind="primary"] {
-    background: linear-gradient(135deg, var(--accent-primary), #6366f1) !important;
+    background: linear-gradient(135deg, var(--amber-primary), var(--amber-hover)) !important;
     border: none !important;
-    color: #ffffff !important;
-    font-weight: 800 !important;
+    color: #090d16 !important;
+    font-weight: 900 !important;
     border-radius: 14px !important;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25) !important;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35) !important;
     transition: all 0.25s ease !important;
 }
 
 div.stButton > button[kind="primary"]:hover {
-    background: linear-gradient(135deg, var(--accent-hover), #4f46e5) !important;
-    box-shadow: 0 8px 22px rgba(79, 70, 229, 0.4) !important;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.55) !important;
     transform: translateY(-1px) !important;
 }
 
@@ -443,10 +473,10 @@ div.stButton > button[kind="primary"]:hover {
     align-items: center;
     gap: 0.5rem;
     padding: 0.6rem 1.2rem;
-    background: var(--accent-emerald-bg);
-    border: 1px solid var(--accent-emerald);
+    background: var(--emerald-bg);
+    border: 1px solid var(--emerald-drop);
     border-radius: 9999px;
-    color: var(--accent-emerald);
+    color: var(--emerald-drop);
     font-size: 0.84rem;
     font-weight: 800;
     letter-spacing: 0.04em;
@@ -456,16 +486,16 @@ div.stButton > button[kind="primary"]:hover {
 
 div[data-testid="stTextInput"] input,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-    background: var(--bg-glass) !important;
-    border: 1px solid var(--border-glass) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
     border-radius: 14px !important;
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
 }
 
 div[data-testid="stTextInput"] input:focus,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {
-    border-color: var(--accent-primary) !important;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
+    border-color: var(--amber-primary) !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2) !important;
 }
 
 label[data-testid="stWidgetLabel"] p {
@@ -477,8 +507,8 @@ label[data-testid="stWidgetLabel"] p {
 }
 
 [data-testid="stDataFrame"] {
-    background: var(--bg-glass) !important;
-    border: 1px solid var(--border-glass) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
     border-radius: 18px !important;
 }
 
@@ -492,7 +522,7 @@ label[data-testid="stWidgetLabel"] p {
     <div class="brand-lockup">
         <div class="brand-logo">🎧</div>
         <div>
-            <span class="brand-text">DropAlert</span>
+            <span class="brand-text">Drop<span class="gold">Alert</span></span>
             <span class="brand-badge">Student Edition</span>
         </div>
     </div>
@@ -614,13 +644,13 @@ if recent_alerts:
 <div class="alert-card {card_cls}">
     <div>
         <span class="alert-pill {card_cls}">{icon} ({pct}% OFF)</span>
-        <strong style="margin-left: 0.8rem; color:#0f172a;">{html.escape(name[:75])}</strong>
+        <strong style="margin-left: 0.8rem; color:#ffffff;">{html.escape(name[:75])}</strong>
         <div class="alert-meta">
             Was: <del>₹{old_p:,}</del> ➔ <strong>Now: ₹{new_p:,}</strong> ({diff_str}) | Detected: {t_time}
         </div>
     </div>
     <div>
-        <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--accent-primary);">Grab Deal ↗</a>
+        <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--amber-primary);">Grab Deal ↗</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -685,8 +715,8 @@ if products:
             y=df_history["Price"],
             mode="lines+markers",
             name="Price (₹)",
-            line=dict(color="#4f46e5", width=3),
-            marker=dict(size=7, color="#059669", symbol="circle"),
+            line=dict(color="#f59e0b", width=3.5),
+            marker=dict(size=8, color="#10b981", symbol="circle"),
             hovertemplate="<b>Date:</b> %{x}<br><b>Price:</b> ₹%{y:,}<extra></extra>"
         ))
 
@@ -696,32 +726,32 @@ if products:
             y0=all_time_low,
             x1=df_history["Scraped At"].iloc[-1],
             y1=all_time_low,
-            line=dict(color="#059669", width=1.5, dash="dash"),
+            line=dict(color="#10b981", width=1.5, dash="dash"),
         )
 
         fig.update_layout(
-            paper_bgcolor="rgba(248, 250, 252, 0.6)",
-            plot_bgcolor="rgba(255, 255, 255, 0.95)",
-            font=dict(color="#0f172a", family="Plus Jakarta Sans"),
+            paper_bgcolor="rgba(9, 13, 22, 0.8)",
+            plot_bgcolor="rgba(17, 24, 39, 0.9)",
+            font=dict(color="#f8fafc", family="Plus Jakarta Sans"),
             margin=dict(l=20, r=20, t=30, b=30),
-            height=330,
+            height=340,
             xaxis=dict(
                 title="Timestamp / Scrape Date",
                 type="category",
-                gridcolor="#e2e8f0",
+                gridcolor="rgba(255, 255, 255, 0.06)",
                 showline=True,
-                linecolor="#cbd5e1"
+                linecolor="rgba(255, 255, 255, 0.1)"
             ),
             yaxis=dict(
                 title="Price in ₹",
-                gridcolor="#e2e8f0",
+                gridcolor="rgba(255, 255, 255, 0.06)",
                 showline=True,
-                linecolor="#cbd5e1",
+                linecolor="rgba(255, 255, 255, 0.1)",
                 tickprefix="₹",
                 tickformat="d"
             ),
             hoverlabel=dict(
-                bgcolor="#0f172a",
+                bgcolor="#1e293b",
                 font_size=13,
                 font_family="Plus Jakarta Sans",
                 font_color="#ffffff"
