@@ -10,14 +10,14 @@ try:
     from database import get_recent_alerts, get_price_history_for_product, DB_PATH
 except ImportError:
     from database import get_recent_alerts, DB_PATH
-    def get_price_history_for_product(url):
+    def get_price_history_for_product(url_or_name):
         with sqlite3.connect(DB_PATH) as con:
             return con.execute("""
                 SELECT price, mrp, discount, scraped_at
                 FROM price_history
-                WHERE url = ?
+                WHERE url = ? OR LOWER(TRIM(name)) = LOWER(TRIM(?))
                 ORDER BY id ASC
-            """, (url,)).fetchall()
+            """, (url_or_name, url_or_name)).fetchall()
 
 from scraper import run_scraper
 
@@ -518,21 +518,22 @@ with col_action:
             else:
                 st.error(f"Scrape failed: {res.get('message')}")
 
-# ── DB Queries & Data Handling
+# ── DB Queries & Deduplicated Data Handling
 @st.cache_data(ttl=30)
 def get_products():
     with sqlite3.connect(DB_PATH) as con:
+        # Strictly deduplicate products by clean name, selecting the latest scrape ID per product
         return con.execute(
             """
             SELECT p.name, p.url, p.price, p.mrp, p.discount, p.image, p.scraped_at
             FROM price_history AS p
             INNER JOIN (
-                SELECT url, MAX(scraped_at) AS latest_at
+                SELECT LOWER(TRIM(name)) AS clean_name, MAX(id) AS max_id
                 FROM price_history
                 WHERE price <= 6000
-                GROUP BY url
+                GROUP BY LOWER(TRIM(name))
             ) AS latest
-                ON p.url = latest.url AND p.scraped_at = latest.latest_at
+                ON p.id = latest.max_id
             WHERE p.price <= 6000
             ORDER BY p.price ASC
             """
@@ -648,7 +649,7 @@ if products:
     )
 
     selected_url = product_options[selected_name]
-    history_data = get_price_history_for_product(selected_url)
+    history_data = get_price_history_for_product(selected_name)
 
     if history_data:
         df_history = pd.DataFrame(history_data, columns=["Price", "MRP", "Discount", "Scraped At"])
@@ -671,9 +672,6 @@ if products:
         c2.metric("All-Time Lowest", f"₹{all_time_low:,}")
         c3.metric("All-Time Highest", f"₹{all_time_high:,}")
         c4.metric("Historical Average", f"₹{avg_hist_p:,}")
-
-        if len(df_history) == 1:
-            st.caption("ℹ️ *1 scrape point recorded so far. Click 'Trigger Live Scrape Now' or check back daily as GitHub Actions logs price history points over time!*")
 
         fig = go.Figure()
 
