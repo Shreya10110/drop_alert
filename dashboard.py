@@ -28,36 +28,35 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Warm Amber Gold & Midnight Dark Luxury Aesthetics
+# ── Soft Beige & Warm Espresso Brown Aesthetic CSS
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-    --bg-main: #090d16;
-    --bg-card: rgba(17, 24, 39, 0.85);
-    --bg-card-hover: rgba(26, 36, 56, 0.95);
-    --border-color: rgba(245, 158, 11, 0.22);
-    --border-hover: rgba(245, 158, 11, 0.55);
-    --amber-primary: #f59e0b;
-    --amber-hover: #d97706;
-    --amber-light: rgba(245, 158, 11, 0.12);
-    --emerald-drop: #10b981;
-    --emerald-bg: rgba(16, 185, 129, 0.12);
-    --rose-hike: #f43f5e;
-    --rose-bg: rgba(244, 63, 94, 0.12);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --shadow-amber: 0 10px 30px rgba(245, 158, 11, 0.08);
-    --shadow-hover: 0 16px 40px rgba(245, 158, 11, 0.18);
+    --bg-main: #f5f2eb;
+    --bg-card: #ffffff;
+    --bg-card-hover: #faf8f5;
+    --border-color: #e6e0d4;
+    --border-hover: #c4b8a5;
+    --brown-primary: #785532;
+    --brown-hover: #5c4024;
+    --brown-light: #f0e8dc;
+    --sage-drop: #2e7d32;
+    --sage-bg: #e8f5e9;
+    --terracotta-hike: #c62828;
+    --terracotta-bg: #ffebee;
+    --text-primary: #2c221e;
+    --text-secondary: #70625a;
+    --shadow-soft: 0 8px 24px rgba(120, 85, 50, 0.06);
+    --shadow-hover: 0 14px 32px rgba(120, 85, 50, 0.12);
 }
 
 html, body, [data-testid="stAppViewContainer"],
 [data-testid="stMain"], .stApp {
-    background: radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(217, 119, 6, 0.06) 0px, transparent 50%),
-                radial-gradient(at 50% 0%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
-                #090d16 !important;
+    background: radial-gradient(at 0% 0%, rgba(240, 232, 220, 0.6) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(230, 224, 212, 0.5) 0px, transparent 50%),
+                #f5f2eb !important;
     color: var(--text-primary) !important;
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
 }
@@ -77,28 +76,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     padding-bottom: 4rem !important;
 }
 
-/* Keyframe Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
-    }
-}
-
-/* Top Brand Navigation Header */
+/* Top Navigation Header */
 .topbar {
     display: flex;
     align-items: center;
@@ -107,10 +85,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    box-shadow: var(--shadow-amber);
+    box-shadow: var(--shadow-soft);
     margin-bottom: 1.8rem;
-    backdrop-filter: blur(20px);
-    animation: fadeInUp 0.4s ease-out;
 }
 
 .brand-lockup {
@@ -120,37 +96,33 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 .brand-logo {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3.1rem;
+    height: 3.1rem;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, var(--amber-primary), #d97706);
-    color: #090d16;
+    background: var(--brown-primary);
+    color: #ffffff;
     border-radius: 14px;
-    font-size: 1.8rem;
-    box-shadow: 0 8px 22px rgba(245, 158, 11, 0.35);
+    font-size: 1.7rem;
+    box-shadow: 0 6px 18px rgba(120, 85, 50, 0.2);
 }
 
 .brand-text {
-    font-size: 1.85rem;
+    font-size: 1.8rem;
     font-weight: 900;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.03em;
-}
-
-.brand-text span.gold {
-    color: var(--amber-primary);
 }
 
 .brand-badge {
     padding: 0.22rem 0.7rem;
-    background: var(--amber-light);
-    border: 1px solid rgba(245, 158, 11, 0.35);
+    background: var(--brown-light);
+    border: 1px solid rgba(120, 85, 50, 0.2);
     border-radius: 9999px;
-    color: var(--amber-primary);
+    color: var(--brown-primary);
     font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-left: 0.5rem;
 }
@@ -160,10 +132,10 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     align-items: center;
     gap: 0.55rem;
     padding: 0.45rem 0.95rem;
-    background: var(--amber-light);
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: var(--sage-bg);
+    border: 1px solid rgba(46, 125, 50, 0.2);
     border-radius: 9999px;
-    color: var(--amber-primary);
+    color: var(--sage-drop);
     font-size: 0.78rem;
     font-weight: 700;
 }
@@ -172,8 +144,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--amber-primary);
-    animation: pulseGlow 2s infinite;
+    background: var(--sage-drop);
 }
 
 /* Hero Section */
@@ -181,19 +152,17 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     padding: 2rem 2.2rem;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-left: 6px solid var(--amber-primary);
+    border-left: 6px solid var(--brown-primary);
     border-radius: 22px;
-    box-shadow: var(--shadow-amber);
-    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-soft);
     margin-bottom: 1.8rem;
-    animation: fadeInUp 0.5s ease-out;
 }
 
 .hero-card h1 {
     margin: 0 0 0.5rem;
     font-size: 1.85rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
@@ -204,16 +173,14 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     line-height: 1.6;
 }
 
-/* Stat Metric Cards */
+/* Stat Metric Strip */
 [data-testid="stMetric"] {
     background: var(--bg-card) !important;
     border: 1px solid var(--border-color) !important;
     border-radius: 18px !important;
     padding: 1.25rem 1.45rem !important;
-    box-shadow: var(--shadow-amber) !important;
-    backdrop-filter: blur(16px) !important;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    animation: fadeInUp 0.5s ease-out;
+    box-shadow: var(--shadow-soft) !important;
+    transition: all 0.25s ease !important;
 }
 
 [data-testid="stMetric"]:hover {
@@ -231,7 +198,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 [data-testid="stMetricValue"] {
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
     font-size: 1.8rem !important;
     font-weight: 800 !important;
 }
@@ -239,14 +206,13 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 /* Section Headings */
 .section-title-wrap {
     margin: 2.2rem 0 1.2rem;
-    animation: fadeInUp 0.4s ease-out;
 }
 
 .section-kicker {
-    color: var(--amber-primary);
+    color: var(--brown-primary);
     font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
@@ -254,11 +220,11 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     margin: 0.2rem 0 0;
     font-size: 1.4rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
-/* Price Alert Cards */
+/* Alert Cards */
 .alert-card {
     padding: 1.15rem 1.45rem;
     margin-bottom: 0.95rem;
@@ -269,10 +235,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    box-shadow: var(--shadow-amber);
-    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-soft);
     transition: transform 0.25s ease, border-color 0.25s ease;
-    animation: fadeInUp 0.4s ease-out;
 }
 
 .alert-card:hover {
@@ -280,8 +244,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     border-color: var(--border-hover);
 }
 
-.alert-card.drop { border-left: 5px solid var(--emerald-drop); }
-.alert-card.increase { border-left: 5px solid var(--rose-hike); }
+.alert-card.drop { border-left: 5px solid var(--sage-drop); }
+.alert-card.increase { border-left: 5px solid var(--terracotta-hike); }
 
 .alert-pill {
     display: inline-flex;
@@ -295,8 +259,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     text-transform: uppercase;
 }
 
-.alert-pill.drop { background: var(--emerald-bg); color: var(--emerald-drop); border: 1px solid rgba(16, 185, 129, 0.3); }
-.alert-pill.increase { background: var(--rose-bg); color: var(--rose-hike); border: 1px solid rgba(244, 63, 94, 0.3); }
+.alert-pill.drop { background: var(--sage-bg); color: var(--sage-drop); border: 1px solid rgba(46, 125, 50, 0.2); }
+.alert-pill.increase { background: var(--terracotta-bg); color: var(--terracotta-hike); border: 1px solid rgba(198, 40, 40, 0.2); }
 
 .alert-meta {
     font-size: 0.82rem;
@@ -313,14 +277,12 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 22px;
-    box-shadow: var(--shadow-amber);
-    backdrop-filter: blur(20px);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: fadeInUp 0.5s ease-out;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border-color: var(--border-hover);
     box-shadow: var(--shadow-hover);
     background: var(--bg-card-hover);
@@ -335,47 +297,47 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 
 .deal-badge {
     padding: 0.32rem 0.75rem;
-    background: var(--amber-light);
-    color: var(--amber-primary);
+    background: var(--brown-light);
+    color: var(--brown-primary);
     font-size: 0.72rem;
     font-weight: 800;
     border-radius: 9999px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    border: 1px solid rgba(245, 158, 11, 0.35);
+    border: 1px solid rgba(120, 85, 50, 0.2);
 }
 
 .trend-indicator {
     font-size: 0.76rem;
     font-weight: 700;
-    color: var(--emerald-drop);
+    color: var(--sage-drop);
     padding: 0.22rem 0.65rem;
-    background: var(--emerald-bg);
+    background: var(--sage-bg);
     border-radius: 9999px;
 }
 
-.trend-indicator.up { color: var(--rose-hike); background: var(--rose-bg); }
-.trend-indicator.flat { color: var(--text-secondary); background: rgba(255, 255, 255, 0.05); }
+.trend-indicator.up { color: var(--terracotta-hike); background: var(--terracotta-bg); }
+.trend-indicator.flat { color: var(--text-secondary); background: #eae3d2; }
 
-/* Uniform Fixed Image Box */
+/* Fixed Uniform Image Box */
 .product-img-box {
     width: 100%;
     height: 155px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(9, 13, 22, 0.7);
+    background: #faf8f5;
     border-radius: 14px;
     margin-bottom: 1.1rem;
     padding: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid #f0e8dc;
 }
 
 .product-img-box img {
     max-height: 135px;
     max-width: 100%;
     object-fit: contain;
-    transition: transform 0.35s ease;
+    transition: transform 0.3s ease;
 }
 
 .product-card:hover .product-img-box img {
@@ -383,7 +345,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 }
 
 .product-title {
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.4;
@@ -398,7 +360,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .price-box {
     margin-top: auto;
     padding-top: 0.9rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    border-top: 1px dashed var(--border-color);
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -407,7 +369,7 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
 .student-price {
     font-size: 1.65rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
@@ -421,49 +383,51 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"],
     display: inline-block;
     font-size: 0.74rem;
     font-weight: 700;
-    color: var(--emerald-drop);
-    background: var(--emerald-bg);
-    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: var(--sage-drop);
+    background: var(--sage-bg);
+    border: 1px solid rgba(46, 125, 50, 0.2);
     padding: 0.2rem 0.55rem;
     border-radius: 6px;
     margin-top: 0.4rem;
 }
 
-/* Warm Amber Buttons */
+/* Warm Espresso Buttons */
 .deal-button {
     display: block;
     margin-top: 1rem;
     padding: 0.8rem 1rem;
-    background: linear-gradient(135deg, var(--amber-primary), var(--amber-hover));
-    color: #090d16 !important;
+    background: var(--brown-primary);
+    color: #ffffff !important;
     font-size: 0.82rem;
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: 0.05em;
     text-align: center;
     text-decoration: none !important;
     border-radius: 14px;
     text-transform: uppercase;
-    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+    box-shadow: 0 4px 14px rgba(120, 85, 50, 0.2);
     transition: all 0.25s ease;
 }
 
 .deal-button:hover {
-    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.55);
+    background: var(--brown-hover);
+    box-shadow: 0 6px 18px rgba(120, 85, 50, 0.35);
     transform: translateY(-2px);
 }
 
 div.stButton > button[kind="primary"] {
-    background: linear-gradient(135deg, var(--amber-primary), var(--amber-hover)) !important;
+    background: var(--brown-primary) !important;
     border: none !important;
-    color: #090d16 !important;
-    font-weight: 900 !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
     border-radius: 14px !important;
-    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35) !important;
+    box-shadow: 0 4px 14px rgba(120, 85, 50, 0.2) !important;
     transition: all 0.25s ease !important;
 }
 
 div.stButton > button[kind="primary"]:hover {
-    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.55) !important;
+    background: var(--brown-hover) !important;
+    box-shadow: 0 6px 18px rgba(120, 85, 50, 0.35) !important;
     transform: translateY(-1px) !important;
 }
 
@@ -473,10 +437,10 @@ div.stButton > button[kind="primary"]:hover {
     align-items: center;
     gap: 0.5rem;
     padding: 0.6rem 1.2rem;
-    background: var(--emerald-bg);
-    border: 1px solid var(--emerald-drop);
+    background: var(--sage-bg);
+    border: 1px solid var(--sage-drop);
     border-radius: 9999px;
-    color: var(--emerald-drop);
+    color: var(--sage-drop);
     font-size: 0.84rem;
     font-weight: 800;
     letter-spacing: 0.04em;
@@ -489,13 +453,13 @@ div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
     background: var(--bg-card) !important;
     border: 1px solid var(--border-color) !important;
     border-radius: 14px !important;
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
 }
 
 div[data-testid="stTextInput"] input:focus,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {
-    border-color: var(--amber-primary) !important;
-    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2) !important;
+    border-color: var(--brown-primary) !important;
+    box-shadow: 0 0 0 3px rgba(120, 85, 50, 0.15) !important;
 }
 
 label[data-testid="stWidgetLabel"] p {
@@ -522,7 +486,7 @@ label[data-testid="stWidgetLabel"] p {
     <div class="brand-lockup">
         <div class="brand-logo">🎧</div>
         <div>
-            <span class="brand-text">Drop<span class="gold">Alert</span></span>
+            <span class="brand-text">DropAlert</span>
             <span class="brand-badge">Student Edition</span>
         </div>
     </div>
@@ -644,13 +608,13 @@ if recent_alerts:
 <div class="alert-card {card_cls}">
     <div>
         <span class="alert-pill {card_cls}">{icon} ({pct}% OFF)</span>
-        <strong style="margin-left: 0.8rem; color:#ffffff;">{html.escape(name[:75])}</strong>
+        <strong style="margin-left: 0.8rem; color:#2c221e;">{html.escape(name[:75])}</strong>
         <div class="alert-meta">
             Was: <del>₹{old_p:,}</del> ➔ <strong>Now: ₹{new_p:,}</strong> ({diff_str}) | Detected: {t_time}
         </div>
     </div>
     <div>
-        <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--amber-primary);">Grab Deal ↗</a>
+        <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--brown-primary);">Grab Deal ↗</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -715,8 +679,8 @@ if products:
             y=df_history["Price"],
             mode="lines+markers",
             name="Price (₹)",
-            line=dict(color="#f59e0b", width=3.5),
-            marker=dict(size=8, color="#10b981", symbol="circle"),
+            line=dict(color="#785532", width=3.5),
+            marker=dict(size=8, color="#2e7d32", symbol="circle"),
             hovertemplate="<b>Date:</b> %{x}<br><b>Price:</b> ₹%{y:,}<extra></extra>"
         ))
 
@@ -726,32 +690,32 @@ if products:
             y0=all_time_low,
             x1=df_history["Scraped At"].iloc[-1],
             y1=all_time_low,
-            line=dict(color="#10b981", width=1.5, dash="dash"),
+            line=dict(color="#2e7d32", width=1.5, dash="dash"),
         )
 
         fig.update_layout(
-            paper_bgcolor="rgba(9, 13, 22, 0.8)",
-            plot_bgcolor="rgba(17, 24, 39, 0.9)",
-            font=dict(color="#f8fafc", family="Plus Jakarta Sans"),
+            paper_bgcolor="#f5f2eb",
+            plot_bgcolor="#ffffff",
+            font=dict(color="#2c221e", family="Plus Jakarta Sans"),
             margin=dict(l=20, r=20, t=30, b=30),
             height=340,
             xaxis=dict(
                 title="Timestamp / Scrape Date",
                 type="category",
-                gridcolor="rgba(255, 255, 255, 0.06)",
+                gridcolor="#e6e0d4",
                 showline=True,
-                linecolor="rgba(255, 255, 255, 0.1)"
+                linecolor="#c4b8a5"
             ),
             yaxis=dict(
                 title="Price in ₹",
-                gridcolor="rgba(255, 255, 255, 0.06)",
+                gridcolor="#e6e0d4",
                 showline=True,
-                linecolor="rgba(255, 255, 255, 0.1)",
+                linecolor="#c4b8a5",
                 tickprefix="₹",
                 tickformat="d"
             ),
             hoverlabel=dict(
-                bgcolor="#1e293b",
+                bgcolor="#2c221e",
                 font_size=13,
                 font_family="Plus Jakarta Sans",
                 font_color="#ffffff"
