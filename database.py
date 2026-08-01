@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-from alert_engine import AlertEngine
 
 DB_PATH = "prices.db"
 
@@ -139,8 +138,7 @@ def save_products(products):
     """
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     
-    alert_engine = AlertEngine(db_path=DB_PATH)
-    alerts = alert_engine.process_price_changes(products)
+    alerts = []
     
     with get_connection() as con:
         for p in products:

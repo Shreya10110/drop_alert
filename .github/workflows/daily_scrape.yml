@@ -1,0 +1,40 @@
+name: Daily Price Scraper
+
+on:
+  schedule:
+    # Runs automatically at 03:00 UTC (8:30 AM IST) every day
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Allows manual execution from GitHub Actions tab anytime
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Scraper & Update Prices DB
+        run: |
+          python scraper.py
+
+      - name: Commit and Push Updated Database to GitHub
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add prices.db flipkart.html || true
+          git diff-index --quiet HEAD || git commit -m "auto: daily price scrape update [skip ci]"
+          git push
