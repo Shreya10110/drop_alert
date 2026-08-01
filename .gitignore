@@ -3,10 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Database & Scraped HTML Cache
-prices.db
-*.sqlite3
-
 # Virtual Environments
 .venv/
 env/
