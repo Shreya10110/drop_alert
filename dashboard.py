@@ -68,7 +68,7 @@ st.markdown(
 
     .block-container {
         max-width: 1320px;
-        padding-top: 2rem !important;
+        padding-top: 1.8rem !important;
         padding-bottom: 4rem !important;
     }
 
@@ -78,11 +78,11 @@ st.markdown(
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-        padding: 0.9rem 1.4rem;
-        background: rgba(15, 21, 35, 0.9);
+        padding: 0.9rem 1.5rem;
+        background: rgba(15, 21, 35, 0.92);
         border: 1px solid var(--border-color);
         border-radius: 24px;
-        margin-bottom: 1.8rem;
+        margin-bottom: 1.6rem;
         backdrop-filter: blur(20px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
@@ -161,30 +161,151 @@ st.markdown(
         100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 135, 0); }
     }
 
-    /* Hero Banner */
-    .hero-banner {
-        padding: 1.6rem 2rem;
-        background: linear-gradient(135deg, rgba(15, 21, 35, 0.95), rgba(22, 31, 52, 0.85));
+    /* Modern Human-Crafted Hero Landing Section */
+    .hero-landing-wrap {
+        position: relative;
+        padding: 2.5rem 2.5rem 2.2rem;
+        background: linear-gradient(135deg, rgba(15, 21, 35, 0.95), rgba(22, 31, 52, 0.88));
+        border: 1px solid rgba(0, 242, 254, 0.25);
+        border-radius: 28px;
+        margin-bottom: 2rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(24px);
+        overflow: hidden;
+    }
+
+    .hero-landing-wrap::before {
+        content: '';
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(0, 255, 135, 0.05) 50%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .hero-pill-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.9rem;
+        background: rgba(0, 242, 254, 0.08);
+        border: 1px solid rgba(0, 242, 254, 0.28);
+        border-radius: 30px;
+        color: var(--neon-cyan);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-main-title {
+        margin: 0 0 1rem;
+        font-size: 2.35rem;
+        font-weight: 900;
+        line-height: 1.22;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+    }
+
+    .hero-gradient-text {
+        background: linear-gradient(135deg, var(--neon-cyan) 20%, var(--neon-green) 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtext {
+        margin: 0 0 1.8rem;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+        max-width: 820px;
+    }
+
+    /* Hero Feature Cards Grid */
+    .hero-feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+        margin-bottom: 1.6rem;
+    }
+
+    .hero-feature-card {
+        padding: 1.2rem 1.3rem;
+        background: rgba(7, 9, 14, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        transition: all 0.25s ease;
+    }
+
+    .hero-feature-card:hover {
+        border-color: rgba(0, 242, 254, 0.35);
+        background: rgba(15, 21, 35, 0.8);
+        transform: translateY(-3px);
+    }
+
+    .feature-icon {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-title {
+        color: #ffffff;
+        font-size: 0.92rem;
+        font-weight: 800;
+        margin-bottom: 0.3rem;
+    }
+
+    .feature-desc {
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        line-height: 1.45;
+    }
+
+    /* Hero Trust Footer Bar */
+    .hero-trust-bar {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        color: var(--text-secondary);
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding-top: 1rem;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        flex-wrap: wrap;
+    }
+
+    .hero-trust-bar span.bullet {
+        color: var(--neon-cyan);
+    }
+
+    /* Scrape Action Box */
+    .scrape-action-card {
+        padding: 1.5rem;
+        background: var(--bg-card);
         border: 1px solid var(--border-color);
-        border-left: 6px solid var(--neon-cyan);
         border-radius: 24px;
-        margin-bottom: 1.8rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    .hero-banner h1 {
-        margin: 0;
-        font-size: 1.65rem;
-        font-weight: 800;
+    .scrape-action-card h3 {
+        margin: 0 0 0.4rem;
         color: #ffffff;
-        letter-spacing: -0.02em;
+        font-size: 1.15rem;
+        font-weight: 800;
     }
 
-    .hero-banner p {
-        margin: 0.4rem 0 0;
+    .scrape-action-card p {
+        margin: 0 0 1.2rem;
         color: var(--text-secondary);
-        font-size: 0.92rem;
-        line-height: 1.5;
+        font-size: 0.82rem;
+        line-height: 1.45;
     }
 
     /* Streamlit Metric Cards Styling */
@@ -287,7 +408,7 @@ st.markdown(
     .alert-tag.drop { background: rgba(0, 255, 135, 0.15); color: var(--neon-green); border: 1px solid rgba(0, 255, 135, 0.3); }
     .alert-tag.increase { background: rgba(255, 51, 102, 0.15); color: var(--flame-red); border: 1px solid rgba(255, 51, 102, 0.3); }
 
-    /* Ultra Product Deal Cards with Images */
+    /* Product Deal Cards with Images */
     .student-card {
         display: flex;
         flex-direction: column;
@@ -436,7 +557,6 @@ st.markdown(
         transform: translateY(-2px);
     }
 
-    /* All time low badge styling */
     .all-time-low-badge {
         display: inline-flex;
         align-items: center;
@@ -483,9 +603,10 @@ st.markdown(
         border-radius: 20px !important;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+        .hero-feature-grid { grid-template-columns: 1fr; }
+        .hero-main-title { font-size: 1.85rem; }
         .topbar { flex-direction: column; align-items: flex-start; }
-        .status-container { margin-top: 0.5rem; }
     }
     </style>
 
@@ -499,29 +620,72 @@ st.markdown(
             </div>
         </div>
         <div class="status-container">
-            <div class="status-pill"><span class="pulse-dot"></span> Price Engine Active</div>
+            <div class="status-pill"><span class="pulse-dot"></span> Real-Time Price Engine Active</div>
         </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-# ── Hero Section & Scraper Trigger
-col_hero, col_action = st.columns([3.2, 1])
+# ── Human-Designed Landing Hero Showcase Section
+col_hero, col_action = st.columns([3.2, 1.2])
 
 with col_hero:
     st.markdown(
         """
-        <div class="hero-banner">
-            <h1>🎓 Student Electronics Deal & Price Drop Tracker</h1>
-            <p>Monitors Flipkart budget headphones, ear-buds, and audio gear continuously with automated proxy rotation and real-time drop tracking.</p>
+        <div class="hero-landing-wrap">
+            <div class="hero-pill-tag">
+                <span class="pulse-dot"></span> REAL-TIME AUDIO DEAL ENGINE • UPDATED LIVE
+            </div>
+            <h1 class="hero-main-title">
+                Stop Overpaying for Audio Gear.<br/>
+                <span class="hero-gradient-text">Track Price Drops in Real Time.</span>
+            </h1>
+            <p class="hero-subtext">
+                DropAlert continuously monitors Flipkart for budget TWS earbuds, neckbands, over-ear headphones, and gaming headsets. Compare historic Camel price trends and snag verified all-time low student deals.
+            </p>
+            
+            <div class="hero-feature-grid">
+                <div class="hero-feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Automated Proxy Scraper</div>
+                    <div class="feature-desc">Fetches live Flipkart prices continuously without IP blocks or stale cache.</div>
+                </div>
+                <div class="hero-feature-card">
+                    <div class="feature-icon">📉</div>
+                    <div class="feature-title">Camel Price History</div>
+                    <div class="feature-desc">Tracks historic price points to verify true discounts vs fake price markups.</div>
+                </div>
+                <div class="hero-feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <div class="feature-title">Student Budget Focus</div>
+                    <div class="feature-desc">Curated deals under ₹999 & ₹1,499 with 50%+ discount alerts for students.</div>
+                </div>
+            </div>
+            
+            <div class="hero-trust-bar">
+                <span>🔒 100% Free & Open Tracker</span>
+                <span class="bullet">•</span>
+                <span>⚡ Scraped Live from Flipkart</span>
+                <span class="bullet">•</span>
+                <span>📊 Verified Price Analytics</span>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
 with col_action:
-    if st.button("⚡ Scrape Fresh Deals", use_container_width=True, type="primary"):
+    st.markdown(
+        """
+        <div class="scrape-action-card">
+            <h3>⚡ Live Scraper Trigger</h3>
+            <p>Fetch current audio product prices directly from Flipkart and update the deal database instantly.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("🚀 Trigger Live Scrape Now", use_container_width=True, type="primary"):
         with st.spinner("Scraping Flipkart using automated proxy rotation..."):
             st.cache_data.clear()
             res = run_scraper()
