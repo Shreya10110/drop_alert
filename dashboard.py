@@ -28,18 +28,18 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Student Neo-Modern Dark Glassmorphism CSS Design
+# ── Ultra-Premium Student Glassmorphism & Cyber-Neon CSS
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
     :root {
-        --bg-main: #0b0f19;
-        --bg-card: rgba(18, 24, 38, 0.85);
-        --bg-card-hover: rgba(26, 35, 56, 0.95);
+        --bg-main: #07090e;
+        --bg-card: rgba(15, 21, 35, 0.85);
+        --bg-card-hover: rgba(22, 31, 52, 0.95);
         --border-color: rgba(255, 255, 255, 0.08);
-        --border-glow: rgba(0, 242, 254, 0.3);
+        --border-glow: rgba(0, 242, 254, 0.35);
         --neon-cyan: #00f2fe;
         --neon-green: #00ff87;
         --neon-purple: #7928ca;
@@ -67,63 +67,64 @@ st.markdown(
     }
 
     .block-container {
-        max-width: 1280px;
-        padding-top: 2.5rem !important;
+        max-width: 1320px;
+        padding-top: 2rem !important;
         padding-bottom: 4rem !important;
     }
 
-    /* Top Brand Bar */
+    /* Top Brand Navigation Bar */
     .topbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-        padding: 0.8rem 1.2rem;
-        background: var(--bg-card);
+        padding: 0.9rem 1.4rem;
+        background: rgba(15, 21, 35, 0.9);
         border: 1px solid var(--border-color);
-        border-radius: 20px;
-        margin-bottom: 1.5rem;
-        backdrop-filter: blur(16px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        border-radius: 24px;
+        margin-bottom: 1.8rem;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
 
     .brand-lockup {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 1.1rem;
     }
 
     .brand-logo {
-        width: 3.2rem;
-        height: 3.2rem;
+        width: 3.4rem;
+        height: 3.4rem;
         display: grid;
         place-items: center;
         background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
-        border-radius: 14px;
-        font-size: 1.8rem;
-        box-shadow: 0 0 20px rgba(0, 255, 135, 0.4);
+        border-radius: 16px;
+        font-size: 1.9rem;
+        box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
     }
 
     .brand-text {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
         font-weight: 900;
         letter-spacing: -0.04em;
-        background: linear-gradient(135deg, #ffffff 30%, #94a3b8);
+        background: linear-gradient(135deg, #ffffff 40%, var(--neon-cyan));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     .brand-badge {
         display: inline-block;
-        padding: 0.2rem 0.6rem;
-        background: linear-gradient(90deg, #7928ca, #ff0080);
+        padding: 0.25rem 0.75rem;
+        background: linear-gradient(135deg, var(--neon-purple), #ff0080);
         border-radius: 20px;
         color: #ffffff;
-        font-size: 0.68rem;
+        font-size: 0.7rem;
         font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin-left: 0.5rem;
+        margin-left: 0.6rem;
+        box-shadow: 0 0 15px rgba(121, 40, 202, 0.4);
     }
 
     .status-container {
@@ -135,68 +136,76 @@ st.markdown(
     .status-pill {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.45rem 0.85rem;
+        gap: 0.55rem;
+        padding: 0.5rem 1rem;
         background: rgba(0, 255, 135, 0.08);
         border: 1px solid rgba(0, 255, 135, 0.25);
         border-radius: 30px;
         color: var(--neon-green) !important;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 700;
     }
 
     .pulse-dot {
-        width: 8px;
-        height: 8px;
+        width: 9px;
+        height: 9px;
         border-radius: 50%;
         background: var(--neon-green);
-        box-shadow: 0 0 10px var(--neon-green);
+        box-shadow: 0 0 12px var(--neon-green);
         animation: pulse 1.8s infinite;
     }
 
     @keyframes pulse {
         0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 135, 0.7); }
-        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 255, 135, 0); }
+        70% { transform: scale(1); box-shadow: 0 0 0 9px rgba(0, 255, 135, 0); }
         100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 135, 0); }
     }
 
     /* Hero Banner */
     .hero-banner {
-        padding: 1.4rem 1.8rem;
-        background: linear-gradient(135deg, rgba(18, 24, 38, 0.9), rgba(30, 41, 59, 0.8));
+        padding: 1.6rem 2rem;
+        background: linear-gradient(135deg, rgba(15, 21, 35, 0.95), rgba(22, 31, 52, 0.85));
         border: 1px solid var(--border-color);
-        border-left: 5px solid var(--neon-cyan);
-        border-radius: 20px;
-        margin-bottom: 1.5rem;
+        border-left: 6px solid var(--neon-cyan);
+        border-radius: 24px;
+        margin-bottom: 1.8rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .hero-banner h1 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.65rem;
         font-weight: 800;
         color: #ffffff;
         letter-spacing: -0.02em;
     }
 
     .hero-banner p {
-        margin: 0.3rem 0 0;
+        margin: 0.4rem 0 0;
         color: var(--text-secondary);
-        font-size: 0.88rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
     }
 
-    /* Custom Streamlit Metrics */
+    /* Streamlit Metric Cards Styling */
     [data-testid="stMetric"] {
         background: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
-        border-radius: 18px !important;
-        padding: 1rem 1.2rem !important;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
-        backdrop-filter: blur(12px);
+        border-radius: 22px !important;
+        padding: 1.2rem 1.4rem !important;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.25) !important;
+        backdrop-filter: blur(16px);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    [data-testid="stMetric"]:hover {
+        transform: translateY(-3px);
+        border-color: rgba(0, 242, 254, 0.3) !important;
     }
 
     [data-testid="stMetricLabel"] {
         color: var(--text-secondary) !important;
-        font-size: 0.75rem !important;
+        font-size: 0.78rem !important;
         font-weight: 800 !important;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -204,7 +213,7 @@ st.markdown(
 
     [data-testid="stMetricValue"] {
         color: #ffffff !important;
-        font-size: 1.75rem !important;
+        font-size: 1.85rem !important;
         font-weight: 900 !important;
         background: linear-gradient(135deg, #ffffff, var(--neon-cyan));
         -webkit-background-clip: text;
@@ -216,81 +225,88 @@ st.markdown(
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 2rem 0 1rem;
+        margin: 2.2rem 0 1.2rem;
     }
 
     .section-kicker {
         color: var(--neon-cyan);
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         font-weight: 800;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
     }
 
     .section-h2 {
-        margin: 0.1rem 0 0;
-        font-size: 1.3rem;
+        margin: 0.2rem 0 0;
+        font-size: 1.4rem;
         font-weight: 800;
         color: #ffffff;
+        letter-spacing: -0.02em;
     }
 
-    /* Alert Cards */
+    /* Price Alert Cards */
     .alert-card-glow {
-        padding: 1.1rem 1.4rem;
-        margin-bottom: 0.9rem;
-        border-radius: 16px;
-        background: rgba(15, 23, 42, 0.9);
+        padding: 1.15rem 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 20px;
+        background: rgba(15, 21, 35, 0.92);
         border: 1px solid rgba(255, 255, 255, 0.08);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 1rem;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        gap: 1.2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        backdrop-filter: blur(12px);
+        transition: transform 0.2s ease;
+    }
+
+    .alert-card-glow:hover {
+        transform: translateX(4px);
     }
 
     .alert-card-glow.drop {
-        border-left: 5px solid var(--neon-green);
-        box-shadow: 0 0 20px rgba(0, 255, 135, 0.12);
+        border-left: 6px solid var(--neon-green);
+        box-shadow: 0 0 25px rgba(0, 255, 135, 0.12);
     }
 
     .alert-card-glow.increase {
-        border-left: 5px solid var(--flame-red);
-        box-shadow: 0 0 20px rgba(255, 51, 102, 0.12);
+        border-left: 6px solid var(--flame-red);
+        box-shadow: 0 0 25px rgba(255, 51, 102, 0.12);
     }
 
     .alert-tag {
         display: inline-block;
-        padding: 0.3rem 0.7rem;
+        padding: 0.32rem 0.75rem;
         border-radius: 30px;
-        font-size: 0.72rem;
+        font-size: 0.74rem;
         font-weight: 800;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
     }
 
     .alert-tag.drop { background: rgba(0, 255, 135, 0.15); color: var(--neon-green); border: 1px solid rgba(0, 255, 135, 0.3); }
     .alert-tag.increase { background: rgba(255, 51, 102, 0.15); color: var(--flame-red); border: 1px solid rgba(255, 51, 102, 0.3); }
 
-    /* Student Product Cards */
+    /* Ultra Product Deal Cards with Images */
     .student-card {
         display: flex;
         flex-direction: column;
         height: 100%;
-        padding: 1.3rem;
+        padding: 1.2rem;
         background: var(--bg-card);
         border: 1px solid var(--border-color);
-        border-radius: 20px;
-        margin-bottom: 1.2rem;
+        border-radius: 22px;
+        margin-bottom: 1.3rem;
         position: relative;
         overflow: hidden;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(12px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(14px);
     }
 
     .student-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-7px);
         border-color: var(--neon-cyan);
-        box-shadow: 0 12px 30px rgba(0, 242, 254, 0.18);
+        box-shadow: 0 15px 35px rgba(0, 242, 254, 0.2);
         background: var(--bg-card-hover);
     }
 
@@ -298,41 +314,75 @@ st.markdown(
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 0.9rem;
+        margin-bottom: 0.8rem;
+        z-index: 2;
     }
 
     .student-deal-badge {
-        padding: 0.35rem 0.65rem;
+        padding: 0.35rem 0.75rem;
         background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
-        color: #0b0f19;
-        font-size: 0.7rem;
+        color: #07090e;
+        font-size: 0.72rem;
         font-weight: 900;
-        border-radius: 8px;
-        letter-spacing: 0.04em;
+        border-radius: 10px;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
+        box-shadow: 0 0 15px rgba(0, 255, 135, 0.3);
     }
 
     .trend-indicator {
-        font-size: 0.75rem;
+        font-size: 0.78rem;
         font-weight: 800;
         color: var(--neon-green);
+        padding: 0.2rem 0.6rem;
+        background: rgba(0, 255, 135, 0.1);
+        border-radius: 20px;
     }
 
-    .trend-indicator.up { color: var(--flame-red); }
-    .trend-indicator.flat { color: var(--text-secondary); }
+    .trend-indicator.up { color: var(--flame-red); background: rgba(255, 51, 102, 0.1); }
+    .trend-indicator.flat { color: var(--text-secondary); background: rgba(255, 255, 255, 0.05); }
+
+    .product-img-box {
+        width: 100%;
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(7, 9, 14, 0.6);
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        padding: 0.8rem;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .product-img-box img {
+        max-height: 140px;
+        max-width: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
+
+    .student-card:hover .product-img-box img {
+        transform: scale(1.06);
+    }
 
     .product-title {
         color: #ffffff;
-        font-size: 0.95rem;
+        font-size: 0.96rem;
         font-weight: 700;
         line-height: 1.4;
         margin-bottom: 1rem;
         min-height: 52px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .price-box {
         margin-top: auto;
-        padding-top: 0.8rem;
+        padding-top: 0.9rem;
         border-top: 1px dashed rgba(255, 255, 255, 0.08);
         display: flex;
         align-items: baseline;
@@ -340,95 +390,97 @@ st.markdown(
     }
 
     .student-price {
-        font-size: 1.65rem;
+        font-size: 1.7rem;
         font-weight: 900;
         color: #ffffff;
         letter-spacing: -0.03em;
     }
 
     .original-mrp {
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         color: var(--text-secondary);
         text-decoration: line-through;
     }
 
     .savings-pill {
         display: inline-block;
-        font-size: 0.72rem;
+        font-size: 0.74rem;
         font-weight: 800;
         color: var(--neon-green);
-        background: rgba(0, 255, 135, 0.1);
-        padding: 0.2rem 0.5rem;
-        border-radius: 6px;
+        background: rgba(0, 255, 135, 0.12);
+        border: 1px solid rgba(0, 255, 135, 0.25);
+        padding: 0.22rem 0.6rem;
+        border-radius: 8px;
         margin-top: 0.4rem;
     }
 
     .deal-button {
         display: block;
         margin-top: 1rem;
-        padding: 0.75rem 1rem;
+        padding: 0.8rem 1rem;
         background: linear-gradient(135deg, var(--neon-cyan), #00b4db);
-        color: #0b0f19 !important;
-        font-size: 0.8rem;
+        color: #07090e !important;
+        font-size: 0.82rem;
         font-weight: 900;
         letter-spacing: 0.06em;
         text-align: center;
         text-decoration: none !important;
-        border-radius: 12px;
+        border-radius: 14px;
         text-transform: uppercase;
-        box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
-        transition: all 0.2s ease;
+        box-shadow: 0 4px 18px rgba(0, 242, 254, 0.35);
+        transition: all 0.25s ease;
     }
 
     .deal-button:hover {
-        box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
-        transform: scale(1.02);
+        box-shadow: 0 6px 25px rgba(0, 242, 254, 0.6);
+        transform: translateY(-2px);
     }
 
     /* All time low badge styling */
     .all-time-low-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.6rem 1.2rem;
-        background: linear-gradient(135deg, rgba(0, 255, 135, 0.2), rgba(0, 242, 254, 0.2));
+        gap: 0.6rem;
+        padding: 0.65rem 1.3rem;
+        background: linear-gradient(135deg, rgba(0, 255, 135, 0.18), rgba(0, 242, 254, 0.18));
         border: 1px solid var(--neon-green);
         border-radius: 30px;
         color: var(--neon-green);
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         font-weight: 900;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        box-shadow: 0 0 20px rgba(0, 255, 135, 0.3);
-        margin-bottom: 1rem;
+        box-shadow: 0 0 22px rgba(0, 255, 135, 0.35);
+        margin-bottom: 1.2rem;
     }
 
     div[data-testid="stTextInput"] input,
     div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
         background: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
-        border-radius: 14px !important;
+        border-radius: 16px !important;
         color: #ffffff !important;
+        padding: 0.4rem 0.8rem !important;
     }
 
     div[data-testid="stTextInput"] input:focus,
     div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {
         border-color: var(--neon-cyan) !important;
-        box-shadow: 0 0 15px rgba(0, 242, 254, 0.2) !important;
+        box-shadow: 0 0 18px rgba(0, 242, 254, 0.25) !important;
     }
 
     label[data-testid="stWidgetLabel"] p {
         color: var(--text-secondary) !important;
-        font-size: 0.75rem !important;
+        font-size: 0.78rem !important;
         font-weight: 800 !important;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
     }
 
     [data-testid="stDataFrame"] {
         background: var(--bg-card) !important;
         border: 1px solid var(--border-color) !important;
-        border-radius: 18px !important;
+        border-radius: 20px !important;
     }
 
     @media (max-width: 768px) {
@@ -447,7 +499,7 @@ st.markdown(
             </div>
         </div>
         <div class="status-container">
-            <div class="status-pill"><span class="pulse-dot"></span> Auto Proxy Engine Active</div>
+            <div class="status-pill"><span class="pulse-dot"></span> Price Engine Active</div>
         </div>
     </div>
     """,
@@ -455,14 +507,14 @@ st.markdown(
 )
 
 # ── Hero Section & Scraper Trigger
-col_hero, col_action = st.columns([3, 1])
+col_hero, col_action = st.columns([3.2, 1])
 
 with col_hero:
     st.markdown(
         """
         <div class="hero-banner">
             <h1>🎓 Student Electronics Deal & Price Drop Tracker</h1>
-            <p>Monitors Flipkart budget headphones, ear-buds, and audio gear continuously with automated proxy rotation and desktop drop alerts.</p>
+            <p>Monitors Flipkart budget headphones, ear-buds, and audio gear continuously with automated proxy rotation and real-time drop tracking.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -475,7 +527,7 @@ with col_action:
             res = run_scraper()
             st.cache_data.clear()
             if res["status"] == "success":
-                st.success(f"Scraped {res['products_count']} products! {res['alerts_triggered']} price alerts triggered.")
+                st.success(f"Scraped {res['products_count']} products! {res['alerts_triggered']} price alerts logged.")
                 time.sleep(1)
                 st.rerun()
             else:
@@ -487,7 +539,7 @@ def get_products():
     with sqlite3.connect(DB_PATH) as con:
         return con.execute(
             """
-            SELECT p.name, p.url, p.price, p.mrp, p.discount, p.scraped_at
+            SELECT p.name, p.url, p.price, p.mrp, p.discount, p.image, p.scraped_at
             FROM price_history AS p
             INNER JOIN (
                 SELECT url, MAX(scraped_at) AS latest_at
@@ -509,7 +561,7 @@ def previous_price(url):
             SELECT price
             FROM price_history
             WHERE url = ?
-            ORDER BY scraped_at DESC
+            ORDER BY id DESC
             LIMIT 2
             """,
             (url,),
@@ -566,7 +618,7 @@ st.markdown(
 
 if recent_alerts:
     for alert in recent_alerts:
-        _, name, url, old_p, new_p, change, pct, a_type, _, t_time = alert
+        _, name, url, old_p, new_p, change, pct, a_type, img_url, t_time = alert
         is_drop = a_type == "DROP"
         card_cls = "drop" if is_drop else "increase"
         icon = "🔥 PRICE DROP" if is_drop else "⚠️ PRICE INCREASE"
@@ -590,7 +642,7 @@ if recent_alerts:
             unsafe_allow_html=True,
         )
 else:
-    st.info("💡 No price drops recorded yet. Automated price changes will pop up here and trigger desktop notifications!")
+    st.info("💡 No price drops recorded yet. Automated price changes will pop up here!")
 
 # ── CAMELCAMELCAMEL STYLE INTERACTIVE PRICE HISTORY GRAPH SECTION
 st.markdown(
@@ -673,11 +725,11 @@ if products:
         )
 
         fig.update_layout(
-            paper_bgcolor="rgba(11, 15, 25, 0.6)",
-            plot_bgcolor="rgba(18, 24, 38, 0.8)",
+            paper_bgcolor="rgba(7, 9, 14, 0.6)",
+            plot_bgcolor="rgba(15, 21, 35, 0.85)",
             font=dict(color="#f8fafc", family="Plus Jakarta Sans"),
             margin=dict(l=20, r=20, t=30, b=30),
-            height=320,
+            height=340,
             xaxis=dict(
                 title="Timestamp / Scrape Date",
                 type="category",
@@ -694,7 +746,7 @@ if products:
                 tickformat="d"
             ),
             hoverlabel=dict(
-                bgcolor="#1e293b",
+                bgcolor="#161f34",
                 font_size=13,
                 font_family="Plus Jakarta Sans"
             )
@@ -764,7 +816,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-def render_student_card(name, url, price, mrp, discount):
+def render_student_card(name, url, price, mrp, discount, image_url):
     old_price = previous_price(url)
     display_mrp = clean_mrp(price, mrp, discount)
     savings = display_mrp - price if display_mrp > price else 0
@@ -782,6 +834,7 @@ def render_student_card(name, url, price, mrp, discount):
     safe_name = html.escape(str(name))
     short_name = safe_name if len(safe_name) <= 80 else f"{safe_name[:77]}..."
     safe_url = html.escape(str(url), quote=True)
+    safe_img = html.escape(str(image_url), quote=True) if image_url else "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop"
 
     st.markdown(
         f"""
@@ -789,6 +842,9 @@ def render_student_card(name, url, price, mrp, discount):
             <div class="card-badges">
                 <span class="student-deal-badge">{discount}% OFF</span>
                 <span class="trend-indicator {trend_class}">{trend_text}</span>
+            </div>
+            <div class="product-img-box">
+                <img src="{safe_img}" alt="{short_name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop';"/>
             </div>
             <div class="product-title">{short_name}</div>
             <div style="margin-top:auto;">
@@ -809,9 +865,9 @@ def render_student_card(name, url, price, mrp, discount):
 if filtered:
     card_cols = st.columns(3)
     for idx, item in enumerate(filtered):
-        p_name, p_url, p_price, p_mrp, p_discount, _ = item
+        p_name, p_url, p_price, p_mrp, p_discount, p_image, _ = item
         with card_cols[idx % 3]:
-            render_student_card(p_name, p_url, p_price, p_mrp, p_discount)
+            render_student_card(p_name, p_url, p_price, p_mrp, p_discount, p_image)
 else:
     st.info("No deals found matching your selected budget bracket or search query. Try choosing 'All Student Deals'!")
 
@@ -821,7 +877,7 @@ st.markdown(
     <div class="section-title-wrap">
         <div>
             <div class="section-kicker">Database View</div>
-            <h2 class="section-title">Tracked Price Database</h2>
+            <h2 class="section-h2">Tracked Price Database</h2>
         </div>
     </div>
     """,
@@ -831,7 +887,7 @@ st.markdown(
 if filtered:
     table = pd.DataFrame(
         filtered,
-        columns=["Name", "URL", "Price", "MRP", "Discount", "Updated"],
+        columns=["Name", "URL", "Price", "MRP", "Discount", "Image", "Updated"],
     )
     table["MRP"] = table.apply(lambda r: clean_mrp(r["Price"], r["MRP"], r["Discount"]), axis=1)
     table["Price"] = table["Price"].map(lambda v: f"₹{v:,}")
