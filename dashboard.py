@@ -28,22 +28,28 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Elegant Modern Dark Aesthetics & Micro-Animations CSS
+# ── Clean Light Theme CSS System
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-    --bg-main: #080c14;
-    --bg-card: rgba(17, 24, 39, 0.75);
-    --bg-card-hover: rgba(26, 36, 56, 0.9);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --accent-indigo: #6366f1;
-    --accent-sky: #38bdf8;
-    --accent-emerald: #10b981;
-    --accent-rose: #f43f5e;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --accent-primary: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-light: #eef2ff;
+    --accent-emerald: #059669;
+    --accent-emerald-bg: #ecfdf5;
+    --accent-rose: #dc2626;
+    --accent-rose-bg: #fef2f2;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+    --shadow-hover: 0 12px 30px rgba(79, 70, 229, 0.12);
 }
 
 html, body, [data-testid="stAppViewContainer"],
@@ -53,112 +59,80 @@ html, body, [data-testid="stAppViewContainer"],
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
 }
 
-header, [data-testid="stHeader"], [data-testid="stAppHeader"] {
+/* Hide Streamlit UI Chrome */
+header, [data-testid="stHeader"], [data-testid="stAppHeader"],
+[data-testid="stToolbar"], #MainMenu, footer,
+.viewerBadge_container__1t5np, [data-testid="manage-app-button"] {
     display: none !important;
     height: 0px !important;
     visibility: hidden !important;
 }
 
-[data-testid="stToolbar"], #MainMenu, footer {
-    visibility: hidden !important;
-    display: none !important;
-}
-
 .block-container {
-    max-width: 1320px;
+    max-width: 1280px;
     padding-top: 1.8rem !important;
     padding-bottom: 4rem !important;
 }
 
-/* Keyframe Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-    }
-}
-
+/* Top Navigation Header */
 .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 0.9rem 1.6rem;
-    background: rgba(17, 24, 39, 0.85);
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    margin-bottom: 1.6rem;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.4s ease-out;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.8rem;
 }
 
 .brand-lockup {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.9rem;
 }
 
 .brand-logo {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3rem;
+    height: 3rem;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, var(--accent-indigo), var(--accent-sky));
-    border-radius: 14px;
-    font-size: 1.8rem;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    background: var(--accent-primary);
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 1.6rem;
 }
 
 .brand-text {
-    font-size: 1.85rem;
+    font-size: 1.75rem;
     font-weight: 800;
+    color: var(--text-primary);
     letter-spacing: -0.03em;
-    color: #ffffff;
 }
 
 .brand-badge {
-    display: inline-block;
-    padding: 0.22rem 0.65rem;
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    border-radius: 20px;
-    color: #818cf8;
-    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--accent-light);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 9999px;
+    color: var(--accent-primary);
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-left: 0.5rem;
-}
-
-.status-container {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
 }
 
 .status-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0.45rem 0.95rem;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    border-radius: 30px;
-    color: var(--accent-emerald) !important;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background: var(--accent-emerald-bg);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    border-radius: 9999px;
+    color: var(--accent-emerald);
     font-size: 0.78rem;
     font-weight: 700;
 }
@@ -168,160 +142,47 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"] {
     height: 8px;
     border-radius: 50%;
     background: var(--accent-emerald);
-    animation: pulseGlow 2s infinite;
 }
 
-/* Elegant Hero Landing Wrap */
-.hero-landing-wrap {
-    padding: 2.2rem 2.4rem;
-    background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(30, 41, 59, 0.75));
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    margin-bottom: 1.8rem;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(20px);
-    animation: fadeInUp 0.5s ease-out;
-}
-
-.hero-pill-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.85rem;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.25);
-    border-radius: 30px;
-    color: #818cf8;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 1.1rem;
-}
-
-.hero-main-title {
-    margin: 0 0 0.9rem;
-    font-size: 2.2rem;
-    font-weight: 800;
-    line-height: 1.25;
-    color: #ffffff;
-    letter-spacing: -0.03em;
-}
-
-.hero-highlight-text {
-    color: var(--accent-sky);
-}
-
-.hero-subtext {
-    margin: 0 0 1.6rem;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    max-width: 800px;
-}
-
-/* Hero Feature Cards Grid */
-.hero-feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.hero-feature-card {
-    padding: 1.15rem 1.25rem;
-    background: rgba(8, 12, 20, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-feature-card:hover {
-    border-color: rgba(99, 102, 241, 0.4);
-    background: rgba(17, 24, 39, 0.85);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-}
-
-.feature-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.4rem;
-}
-
-.feature-title {
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-}
-
-.feature-desc {
-    color: var(--text-secondary);
-    font-size: 0.78rem;
-    line-height: 1.45;
-}
-
-/* Hero Trust Footer Bar */
-.hero-trust-bar {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding-top: 1rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.08);
-    flex-wrap: wrap;
-}
-
-.hero-trust-bar span.bullet {
-    color: var(--accent-indigo);
-}
-
-/* Scrape Action Card */
-.scrape-action-card {
-    padding: 1.5rem;
+/* Hero Section */
+.hero-card {
+    padding: 1.8rem 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 22px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    animation: fadeInUp 0.5s ease-out;
+    border-left: 5px solid var(--accent-primary);
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.8rem;
 }
 
-.scrape-action-card h3 {
-    margin: 0 0 0.4rem;
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
+.hero-card h1 {
+    margin: 0 0 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
-.scrape-action-card p {
-    margin: 0 0 1.2rem;
+.hero-card p {
+    margin: 0;
     color: var(--text-secondary);
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 0.95rem;
+    line-height: 1.55;
 }
 
-/* Metric Cards */
+/* Stat Metric Strip */
 [data-testid="stMetric"] {
     background: var(--bg-card) !important;
     border: 1px solid var(--border-color) !important;
-    border-radius: 20px !important;
-    padding: 1.1rem 1.3rem !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
-    backdrop-filter: blur(16px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    animation: fadeInUp 0.5s ease-out;
+    border-radius: 16px !important;
+    padding: 1.2rem 1.4rem !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.2s ease !important;
 }
 
 [data-testid="stMetric"]:hover {
-    transform: translateY(-3px) !important;
-    border-color: rgba(99, 102, 241, 0.35) !important;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3) !important;
+    border-color: var(--accent-primary) !important;
+    box-shadow: var(--shadow-md) !important;
 }
 
 [data-testid="stMetricLabel"] {
@@ -333,162 +194,154 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"] {
 }
 
 [data-testid="stMetricValue"] {
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
     font-size: 1.75rem !important;
     font-weight: 800 !important;
 }
 
-/* Section Headers */
+/* Section Headings */
 .section-title-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2rem 0 1.1rem;
-    animation: fadeInUp 0.4s ease-out;
+    margin: 2.2rem 0 1.2rem;
 }
 
 .section-kicker {
-    color: var(--accent-indigo);
-    font-size: 0.72rem;
+    color: var(--accent-primary);
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
 .section-h2 {
-    margin: 0.15rem 0 0;
-    font-size: 1.35rem;
+    margin: 0.2rem 0 0;
+    font-size: 1.4rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
-/* Price Alert Cards */
-.alert-card-glow {
+/* Alert Cards */
+.alert-card {
     padding: 1.1rem 1.4rem;
     margin-bottom: 0.9rem;
-    border-radius: 18px;
-    background: rgba(17, 24, 39, 0.85);
+    border-radius: 14px;
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.2rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    backdrop-filter: blur(12px);
-    transition: all 0.25s ease;
-    animation: fadeInUp 0.4s ease-out;
+    gap: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.alert-card-glow:hover {
+.alert-card:hover {
     transform: translateX(4px);
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--border-hover);
 }
 
-.alert-card-glow.drop {
-    border-left: 5px solid var(--accent-emerald);
-}
+.alert-card.drop { border-left: 4px solid var(--accent-emerald); }
+.alert-card.increase { border-left: 4px solid var(--accent-rose); }
 
-.alert-card-glow.increase {
-    border-left: 5px solid var(--accent-rose);
-}
-
-.alert-tag {
-    display: inline-block;
-    padding: 0.28rem 0.7rem;
-    border-radius: 20px;
-    font-size: 0.72rem;
-    font-weight: 700;
+.alert-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.74rem;
+    font-weight: 800;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
-.alert-tag.drop { background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.25); }
-.alert-tag.increase { background: rgba(244, 63, 94, 0.12); color: var(--accent-rose); border: 1px solid rgba(244, 63, 94, 0.25); }
+.alert-pill.drop { background: var(--accent-emerald-bg); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.2); }
+.alert-pill.increase { background: var(--accent-rose-bg); color: var(--accent-rose); border: 1px solid rgba(220, 38, 38, 0.2); }
 
-/* Modern Product Deal Cards */
-.student-card {
+.alert-meta {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 0.3rem;
+}
+
+/* Product Deal Cards */
+.product-card {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 1.2rem;
+    padding: 1.4rem;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    margin-bottom: 1.2rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(14px);
-    animation: fadeInUp 0.5s ease-out;
+    border-radius: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.student-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-    background: var(--bg-card-hover);
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-hover);
 }
 
 .card-badges {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
-.student-deal-badge {
+.deal-badge {
     padding: 0.3rem 0.7rem;
-    background: linear-gradient(135deg, var(--accent-indigo), var(--accent-sky));
-    color: #ffffff;
-    font-size: 0.7rem;
+    background: var(--accent-light);
+    color: var(--accent-primary);
+    font-size: 0.72rem;
     font-weight: 800;
-    border-radius: 8px;
+    border-radius: 9999px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    border: 1px solid rgba(79, 70, 229, 0.2);
 }
 
 .trend-indicator {
     font-size: 0.76rem;
     font-weight: 700;
     color: var(--accent-emerald);
-    padding: 0.2rem 0.55rem;
-    background: rgba(16, 185, 129, 0.1);
-    border-radius: 16px;
+    padding: 0.2rem 0.6rem;
+    background: var(--accent-emerald-bg);
+    border-radius: 9999px;
 }
 
-.trend-indicator.up { color: var(--accent-rose); background: rgba(244, 63, 94, 0.1); }
-.trend-indicator.flat { color: var(--text-secondary); background: rgba(255, 255, 255, 0.05); }
+.trend-indicator.up { color: var(--accent-rose); background: var(--accent-rose-bg); }
+.trend-indicator.flat { color: var(--text-secondary); background: #f1f5f9; }
 
+/* Fixed Uniform Image Box */
 .product-img-box {
     width: 100%;
-    height: 160px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(8, 12, 20, 0.5);
-    border-radius: 14px;
-    margin-bottom: 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin-bottom: 1.1rem;
     padding: 0.8rem;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid #f1f5f9;
 }
 
 .product-img-box img {
-    max-height: 135px;
+    max-height: 130px;
     max-width: 100%;
     object-fit: contain;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.25s ease;
 }
 
-.student-card:hover .product-img-box img {
-    transform: scale(1.07);
+.product-card:hover .product-img-box img {
+    transform: scale(1.05);
 }
 
 .product-title {
-    color: #ffffff;
-    font-size: 0.94rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 1rem;
@@ -501,8 +354,8 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"] {
 
 .price-box {
     margin-top: auto;
-    padding-top: 0.85rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--border-color);
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -511,58 +364,77 @@ header, [data-testid="stHeader"], [data-testid="stAppHeader"] {
 .student-price {
     font-size: 1.65rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
 .original-mrp {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
     text-decoration: line-through;
 }
 
 .savings-pill {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 700;
     color: var(--accent-emerald);
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    background: var(--accent-emerald-bg);
+    border: 1px solid rgba(5, 150, 105, 0.2);
     padding: 0.2rem 0.55rem;
     border-radius: 6px;
     margin-top: 0.4rem;
 }
 
+/* Unified Accent Buttons */
 .deal-button {
     display: block;
-    margin-top: 0.9rem;
-    padding: 0.75rem 1rem;
-    background: linear-gradient(135deg, var(--accent-indigo), #4f46e5);
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--accent-primary);
     color: #ffffff !important;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.05em;
     text-align: center;
     text-decoration: none !important;
     border-radius: 12px;
     text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    transition: all 0.2s ease;
 }
 
 .deal-button:hover {
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
-    transform: translateY(-2px);
+    background: var(--accent-hover);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
+    transform: translateY(-1px);
 }
 
+div.stButton > button[kind="primary"] {
+    background: var(--accent-primary) !important;
+    border-color: var(--accent-primary) !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25) !important;
+    transition: all 0.2s ease !important;
+}
+
+div.stButton > button[kind="primary"]:hover {
+    background: var(--accent-hover) !important;
+    border-color: var(--accent-hover) !important;
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4) !important;
+}
+
+/* All Time Low Badge */
 .all-time-low-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.5rem;
     padding: 0.6rem 1.2rem;
-    background: rgba(16, 185, 129, 0.12);
+    background: var(--accent-emerald-bg);
     border: 1px solid var(--accent-emerald);
-    border-radius: 30px;
+    border-radius: 9999px;
     color: var(--accent-emerald);
     font-size: 0.84rem;
     font-weight: 800;
@@ -575,15 +447,14 @@ div[data-testid="stTextInput"] input,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
     background: var(--bg-card) !important;
     border: 1px solid var(--border-color) !important;
-    border-radius: 14px !important;
-    color: #ffffff !important;
-    padding: 0.35rem 0.75rem !important;
+    border-radius: 12px !important;
+    color: var(--text-primary) !important;
 }
 
 div[data-testid="stTextInput"] input:focus,
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {
-    border-color: var(--accent-indigo) !important;
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.2) !important;
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
 }
 
 label[data-testid="stWidgetLabel"] p {
@@ -597,12 +468,10 @@ label[data-testid="stWidgetLabel"] p {
 [data-testid="stDataFrame"] {
     background: var(--bg-card) !important;
     border: 1px solid var(--border-color) !important;
-    border-radius: 18px !important;
+    border-radius: 16px !important;
 }
 
 @media (max-width: 900px) {
-    .hero-feature-grid { grid-template-columns: 1fr; }
-    .hero-main-title { font-size: 1.8rem; }
     .topbar { flex-direction: column; align-items: flex-start; }
 }
 </style>
@@ -616,62 +485,22 @@ label[data-testid="stWidgetLabel"] p {
             <span class="brand-badge">Student Edition</span>
         </div>
     </div>
-    <div class="status-container">
-        <div class="status-pill"><span class="pulse-dot"></span> Price Engine Active</div>
-    </div>
+    <div class="status-pill"><span class="pulse-dot"></span> Price Engine Active</div>
 </div>
 """, unsafe_allow_html=True)
 
-# ── Elegant Human-Designed Landing Hero Showcase Section
+# ── Clean Hero Showcase Section
 col_hero, col_action = st.columns([3.2, 1.2])
 
 with col_hero:
     st.markdown("""
-<div class="hero-landing-wrap">
-    <div class="hero-pill-tag">
-        <span class="pulse-dot"></span> REAL-TIME AUDIO DEAL TRACKER • UPDATED LIVE
-    </div>
-    <h1 class="hero-main-title">
-        Stop Overpaying for Audio Gear.<br/>
-        <span class="hero-highlight-text">Track Price Drops in Real Time.</span>
-    </h1>
-    <p class="hero-subtext">
-        DropAlert continuously monitors Flipkart for budget TWS earbuds, neckbands, over-ear headphones, and gaming headsets. Compare historic Camel price trends and snag verified all-time low student deals.
-    </p>
-    <div class="hero-feature-grid">
-        <div class="hero-feature-card">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-title">Automated Proxy Scraper</div>
-            <div class="feature-desc">Fetches live Flipkart prices continuously without IP blocks or stale cache.</div>
-        </div>
-        <div class="hero-feature-card">
-            <div class="feature-icon">📉</div>
-            <div class="feature-title">Camel Price History</div>
-            <div class="feature-desc">Tracks historic price points to verify true discounts vs fake price markups.</div>
-        </div>
-        <div class="hero-feature-card">
-            <div class="feature-icon">🎓</div>
-            <div class="feature-title">Student Budget Focus</div>
-            <div class="feature-desc">Curated deals under ₹999 & ₹1,499 with 50%+ discount alerts for students.</div>
-        </div>
-    </div>
-    <div class="hero-trust-bar">
-        <span>🔒 100% Free & Open Tracker</span>
-        <span class="bullet">•</span>
-        <span>⚡ Scraped Live from Flipkart</span>
-        <span class="bullet">•</span>
-        <span>📊 Verified Price Analytics</span>
-    </div>
+<div class="hero-card">
+    <h1>🎓 Student Electronics Deal & Price Tracker</h1>
+    <p>Monitors Flipkart budget headphones, TWS earbuds, and audio gear continuously with automated proxy rotation and real-time drop tracking.</p>
 </div>
 """, unsafe_allow_html=True)
 
 with col_action:
-    st.markdown("""
-<div class="scrape-action-card">
-    <h3>⚡ Live Scraper Trigger</h3>
-    <p>Fetch current audio product prices directly from Flipkart and update the deal database instantly.</p>
-</div>
-""", unsafe_allow_html=True)
     if st.button("🚀 Trigger Live Scrape Now", use_container_width=True, type="primary"):
         with st.spinner("Scraping Flipkart using automated proxy rotation..."):
             st.cache_data.clear()
@@ -757,10 +586,8 @@ if products:
 # ── Price Drop & Hike Alerts Feed
 st.markdown("""
 <div class="section-title-wrap">
-    <div>
-        <div class="section-kicker">Live Feed</div>
-        <h2 class="section-h2">🔥 Price Drop & Hike Alerts</h2>
-    </div>
+    <div class="section-kicker">Live Feed</div>
+    <h2 class="section-h2">🔥 Price Drop & Hike Alerts</h2>
 </div>
 """, unsafe_allow_html=True)
 
@@ -773,16 +600,16 @@ if recent_alerts:
         diff_str = f"-₹{abs(change):,}" if is_drop else f"+₹{change:,}"
 
         st.markdown(f"""
-<div class="alert-card-glow {card_cls}">
+<div class="alert-card {card_cls}">
     <div>
-        <span class="alert-tag {card_cls}">{icon} ({pct}% OFF)</span>
-        <strong style="margin-left: 0.8rem; color:#ffffff;">{html.escape(name[:75])}</strong>
-        <div style="font-size: 0.82rem; color: #94a3b8; margin-top: 0.35rem;">
+        <span class="alert-pill {card_cls}">{icon} ({pct}% OFF)</span>
+        <strong style="margin-left: 0.8rem; color:#0f172a;">{html.escape(name[:75])}</strong>
+        <div class="alert-meta">
             Was: <del>₹{old_p:,}</del> ➔ <strong>Now: ₹{new_p:,}</strong> ({diff_str}) | Detected: {t_time}
         </div>
     </div>
     <div>
-        <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--accent-sky);">Grab Deal ↗</a>
+        <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--accent-primary);">Grab Deal ↗</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -792,10 +619,8 @@ else:
 # ── CAMELCAMELCAMEL STYLE INTERACTIVE PRICE HISTORY GRAPH SECTION
 st.markdown("""
 <div class="section-title-wrap">
-    <div>
-        <div class="section-kicker">Camel Price Analytics</div>
-        <h2 class="section-h2">📈 Interactive Price History Graph</h2>
-    </div>
+    <div class="section-kicker">Camel Price Analytics</div>
+    <h2 class="section-h2">📈 Interactive Price History Graph</h2>
 </div>
 """, unsafe_allow_html=True)
 
@@ -849,8 +674,8 @@ if products:
             y=df_history["Price"],
             mode="lines+markers",
             name="Price (₹)",
-            line=dict(color="#38bdf8", width=3),
-            marker=dict(size=7, color="#10b981", symbol="circle"),
+            line=dict(color="#4f46e5", width=3),
+            marker=dict(size=7, color="#059669", symbol="circle"),
             hovertemplate="<b>Date:</b> %{x}<br><b>Price:</b> ₹%{y:,}<extra></extra>"
         ))
 
@@ -860,34 +685,35 @@ if products:
             y0=all_time_low,
             x1=df_history["Scraped At"].iloc[-1],
             y1=all_time_low,
-            line=dict(color="#10b981", width=1.5, dash="dash"),
+            line=dict(color="#059669", width=1.5, dash="dash"),
         )
 
         fig.update_layout(
-            paper_bgcolor="rgba(8, 12, 20, 0.6)",
-            plot_bgcolor="rgba(17, 24, 39, 0.85)",
-            font=dict(color="#f8fafc", family="Plus Jakarta Sans"),
+            paper_bgcolor="#f8fafc",
+            plot_bgcolor="#ffffff",
+            font=dict(color="#0f172a", family="Plus Jakarta Sans"),
             margin=dict(l=20, r=20, t=30, b=30),
             height=330,
             xaxis=dict(
                 title="Timestamp / Scrape Date",
                 type="category",
-                gridcolor="rgba(255, 255, 255, 0.05)",
+                gridcolor="#e2e8f0",
                 showline=True,
-                linecolor="rgba(255,255,255,0.08)"
+                linecolor="#cbd5e1"
             ),
             yaxis=dict(
                 title="Price in ₹",
-                gridcolor="rgba(255, 255, 255, 0.05)",
+                gridcolor="#e2e8f0",
                 showline=True,
-                linecolor="rgba(255,255,255,0.08)",
+                linecolor="#cbd5e1",
                 tickprefix="₹",
                 tickformat="d"
             ),
             hoverlabel=dict(
-                bgcolor="#1e293b",
+                bgcolor="#0f172a",
                 font_size=13,
-                font_family="Plus Jakarta Sans"
+                font_family="Plus Jakarta Sans",
+                font_color="#ffffff"
             )
         )
 
@@ -899,10 +725,8 @@ if products:
 # ── Student Quick Budget Filters
 st.markdown("""
 <div class="section-title-wrap">
-    <div>
-        <div class="section-kicker">Student Budget Filters</div>
-        <h2 class="section-h2">Find Deals in Your Budget</h2>
-    </div>
+    <div class="section-kicker">Student Budget Filters</div>
+    <h2 class="section-h2">Find Deals in Your Budget</h2>
 </div>
 """, unsafe_allow_html=True)
 
@@ -942,10 +766,8 @@ else:
 # ── Student Deal Cards Display
 st.markdown(f"""
 <div class="section-title-wrap">
-    <div>
-        <div class="section-kicker">Curated Deals</div>
-        <h2 class="section-h2">Student Deal Showcase ({len(filtered)} Products)</h2>
-    </div>
+    <div class="section-kicker">Curated Deals</div>
+    <h2 class="section-h2">Student Deal Showcase ({len(filtered)} Products)</h2>
 </div>
 """, unsafe_allow_html=True)
 
@@ -970,9 +792,9 @@ def render_student_card(name, url, price, mrp, discount, image_url):
     safe_img = html.escape(str(image_url), quote=True) if image_url else "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop"
 
     st.markdown(f"""
-<div class="student-card">
+<div class="product-card">
     <div class="card-badges">
-        <span class="student-deal-badge">{discount}% OFF</span>
+        <span class="deal-badge">{discount}% OFF</span>
         <span class="trend-indicator {trend_class}">{trend_text}</span>
     </div>
     <div class="product-img-box">
@@ -1004,10 +826,8 @@ else:
 # ── Data Table View
 st.markdown("""
 <div class="section-title-wrap">
-    <div>
-        <div class="section-kicker">Database View</div>
-        <h2 class="section-h2">Tracked Price Database</h2>
-    </div>
+    <div class="section-kicker">Database View</div>
+    <h2 class="section-h2">Tracked Price Database</h2>
 </div>
 """, unsafe_allow_html=True)
 
