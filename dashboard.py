@@ -93,16 +93,6 @@ st.markdown(
         }
     }
 
-    @keyframes shimmer {
-        0% { background-position: -200% 0; }
-        100% { background-position: 200% 0; }
-    }
-
-    .animated-fade {
-        animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* Top Navigation Header */
     .topbar {
         display: flex;
         align-items: center;
@@ -632,8 +622,7 @@ st.markdown(
             <div class="status-pill"><span class="pulse-dot"></span> Price Engine Active</div>
         </div>
     </div>
-    """))
-)
+    """), unsafe_allow_html=True)
 
 # ── Elegant Human-Designed Landing Hero Showcase Section
 col_hero, col_action = st.columns([3.2, 1.2])
@@ -679,7 +668,7 @@ with col_hero:
                 <span>📊 Verified Price Analytics</span>
             </div>
         </div>
-        """))
+        """), unsafe_allow_html=True)
 
 with col_action:
     st.markdown(
@@ -688,7 +677,7 @@ with col_action:
             <h3>⚡ Live Scraper Trigger</h3>
             <p>Fetch current audio product prices directly from Flipkart and update the deal database instantly.</p>
         </div>
-        """))
+        """), unsafe_allow_html=True)
     if st.button("🚀 Trigger Live Scrape Now", use_container_width=True, type="primary"):
         with st.spinner("Scraping Flipkart using automated proxy rotation..."):
             st.cache_data.clear()
@@ -780,7 +769,7 @@ st.markdown(
             <h2 class="section-h2">🔥 Price Drop & Hike Alerts</h2>
         </div>
     </div>
-    """))
+    """), unsafe_allow_html=True)
 
 if recent_alerts:
     for alert in recent_alerts:
@@ -804,7 +793,7 @@ if recent_alerts:
                     <a href="{html.escape(url)}" target="_blank" style="text-decoration:none; font-size:0.82rem; font-weight:800; color:var(--accent-sky);">Grab Deal ↗</a>
                 </div>
             </div>
-            """))
+            """), unsafe_allow_html=True)
 else:
     st.info("💡 No price drops recorded yet. Automated price changes will pop up here!")
 
@@ -817,7 +806,7 @@ st.markdown(
             <h2 class="section-h2">📈 Interactive Price History Graph</h2>
         </div>
     </div>
-    """))
+    """), unsafe_allow_html=True)
 
 if products:
     product_options = {row[0]: row[1] for row in products}
@@ -855,7 +844,7 @@ if products:
                 <div class="all-time-low-badge">
                     🏆 ALL-TIME LOW RECORD PRICE! Best time to buy right now!
                 </div>
-                """))
+                """), unsafe_allow_html=True)
 
         c1, c2, c3, c4 = st.columns(4)
         c1.metric("Current Price", f"₹{current_p:,}")
@@ -926,7 +915,7 @@ st.markdown(
             <h2 class="section-h2">Find Deals in Your Budget</h2>
         </div>
     </div>
-    """))
+    """), unsafe_allow_html=True)
 
 filter_col, search_col, sort_col = st.columns([2, 2, 1])
 
@@ -970,7 +959,7 @@ st.markdown(
             <h2 class="section-h2">Student Deal Showcase ({len(filtered)} Products)</h2>
         </div>
     </div>
-    """))
+    """), unsafe_allow_html=True)
 
 def render_student_card(name, url, price, mrp, discount, image_url):
     old_price = previous_price(url)
@@ -1014,7 +1003,7 @@ def render_student_card(name, url, price, mrp, discount, image_url):
                 </a>
             </div>
         </div>
-        """))
+        """), unsafe_allow_html=True)
 
 if filtered:
     card_cols = st.columns(3)
@@ -1034,7 +1023,7 @@ st.markdown(
             <h2 class="section-h2">Tracked Price Database</h2>
         </div>
     </div>
-    """))
+    """), unsafe_allow_html=True)
 
 if filtered:
     table = pd.DataFrame(
