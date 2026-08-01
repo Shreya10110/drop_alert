@@ -133,14 +133,49 @@ init_db()
 
 def save_products(products):
     """
-    1. Triggers price change detection & alerts.
+    1. Compares prices against DB history and records price drop/hike alerts into SQLite (no external messages).
     2. Saves products into price_history table.
     """
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
-    
-    alerts = []
+    new_alerts = []
     
     with get_connection() as con:
+        for p in products:
+            url = p["url"]
+            new_price = p["price"]
+            name = p["name"]
+
+            if new_price and new_price > 0:
+                row = con.execute("""
+                    SELECT price FROM price_history 
+                    WHERE url = ? 
+                    ORDER BY id DESC 
+                    LIMIT 1
+                """, (url,)).fetchone()
+
+                if row and row[0] is not None:
+                    old_price = row[0]
+                    if old_price != new_price:
+                        price_change = new_price - old_price
+                        change_pct = round(abs(price_change) / old_price * 100, 1)
+                        alert_type = "DROP" if new_price < old_price else "INCREASE"
+
+                        con.execute("""
+                            INSERT INTO alerts (product_name, product_url, old_price, new_price, price_change, change_pct, alert_type, image_url, triggered_at)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (name, url, old_price, new_price, price_change, change_pct, alert_type, p.get("image", ""), now))
+
+                        new_alerts.append({
+                            "product_name": name,
+                            "url": url,
+                            "old_price": old_price,
+                            "new_price": new_price,
+                            "price_change": price_change,
+                            "change_pct": change_pct,
+                            "alert_type": alert_type,
+                            "triggered_at": now
+                        })
+
         for p in products:
             con.execute("""
                 INSERT INTO price_history (name, url, price, mrp, discount, image, scraped_at)
@@ -148,8 +183,8 @@ def save_products(products):
             """, (p["name"], p["url"], p["price"], p["mrp"], p["discount"], p["image"], now))
         con.commit()
     
-    print(f"[DB] Saved {len(products)} products at {now}")
-    return alerts
+    print(f"[DB] Saved {len(products)} products at {now} (Recorded {len(new_alerts)} price alerts)")
+    return new_alerts
 
 def get_recent_alerts(limit=20):
     """Fetches recent price drop & increase alerts."""
