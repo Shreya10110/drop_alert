@@ -672,6 +672,9 @@ if products:
         c3.metric("All-Time Highest", f"₹{all_time_high:,}")
         c4.metric("Historical Average", f"₹{avg_hist_p:,}")
 
+        if len(df_history) == 1:
+            st.caption("ℹ️ *1 scrape point recorded so far. Click 'Trigger Live Scrape Now' or check back daily as GitHub Actions logs price history points over time!*")
+
         fig = go.Figure()
 
         fig.add_trace(go.Scatter(
@@ -680,7 +683,7 @@ if products:
             mode="lines+markers",
             name="Price (₹)",
             line=dict(color="#785532", width=3.5),
-            marker=dict(size=8, color="#2e7d32", symbol="circle"),
+            marker=dict(size=10, color="#785532", symbol="circle", line=dict(width=2, color="#ffffff")),
             hovertemplate="<b>Date:</b> %{x}<br><b>Price:</b> ₹%{y:,}<extra></extra>"
         ))
 
@@ -690,27 +693,31 @@ if products:
             y0=all_time_low,
             x1=df_history["Scraped At"].iloc[-1],
             y1=all_time_low,
-            line=dict(color="#2e7d32", width=1.5, dash="dash"),
+            line=dict(color="#2e7d32", width=2, dash="dash"),
         )
 
         fig.update_layout(
-            paper_bgcolor="#f5f2eb",
-            plot_bgcolor="#ffffff",
+            paper_bgcolor="#ffffff",
+            plot_bgcolor="#faf8f5",
             font=dict(color="#2c221e", family="Plus Jakarta Sans"),
-            margin=dict(l=20, r=20, t=30, b=30),
+            margin=dict(l=30, r=30, t=30, b=40),
             height=340,
             xaxis=dict(
-                title="Timestamp / Scrape Date",
+                title=dict(text="Scrape Date & Time", font=dict(color="#2c221e", size=12, family="Plus Jakarta Sans")),
+                tickfont=dict(color="#2c221e", size=11),
                 type="category",
                 gridcolor="#e6e0d4",
                 showline=True,
-                linecolor="#c4b8a5"
+                linecolor="#785532",
+                linewidth=1.5
             ),
             yaxis=dict(
-                title="Price in ₹",
+                title=dict(text="Price in ₹", font=dict(color="#2c221e", size=12, family="Plus Jakarta Sans")),
+                tickfont=dict(color="#2c221e", size=11),
                 gridcolor="#e6e0d4",
                 showline=True,
-                linecolor="#c4b8a5",
+                linecolor="#785532",
+                linewidth=1.5,
                 tickprefix="₹",
                 tickformat="d"
             ),
